@@ -1,0 +1,60 @@
+================================================================================
+STATUTE: DRUGS AND COSMETICS RULES, 1945 — PART XVI (ASU DRUGS) & AYURVEDA AAHAR
+JURISDICTION: INDIA
+AUTHORITY: Ministry of AYUSH & Central Drugs Standard Control Organization (CDSCO)
+OFFICIAL REFERENCE: https://ayush.gov.in / Gazette Notification GSR 560(E)
+================================================================================
+
+[DRUGS AND COSMETICS ACT, 1940 — SECTION 3(a)]
+"Ayurvedic, Siddha or Unani drug" includes all medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder in human beings or animals, and manufactured exclusively in accordance with the formulae described in the authoritative books of Ayurvedic, Siddha and Unani (Tibb) systems of medicine, specified in the First Schedule.
+
+---
+
+[THE FIRST SCHEDULE: AUTHORITATIVE CLASSICAL TEXTBOOKS]
+Under Section 3(a), the authoritative Ayurvedic texts include 54 classical compendia:
+1. Charaka Samhita
+2. Sushruta Samhita
+3. Astanga Hridaya
+4. Astanga Samgraha
+5. Sharangadhara Samhita
+6. Bhava Prakasha
+7. Madhava Nidana
+8. Bhesajya Ratnavali
+9. Sahasrayoga
+10. Ayurvedic Formulary of India (AFI - Part I, II, III)
+11. Ayurvedic Pharmacopoeia of India (API)
+
+REGULATORY DISTINCTION:
+- CLASSICAL MEDICINE (Shastriya): Formulations whose exact ingredients, processing techniques (Sanskara), and dosage forms are identical to citations in any of the 54 First Schedule texts. These cannot be patented under Patents Act Section 3(p), but manufacturing licenses can be granted without submitting Phase 3 clinical trial data.
+- PATENT OR PROPRIETARY AYURVEDIC MEDICINE: Defined under Section 3(h) as a formulation containing ingredients mentioned in the First Schedule texts, but not processed according to the classical formula or presenting a novel combination/ratio.
+
+---
+
+[RULE 158B: GUIDELINES FOR ISSUE OF LICENSE WITH RESPECT TO PATENT OR PROPRIETARY AYURVEDIC, SIDDHA OR UNANI MEDICINE]
+For obtaining an Ayurvedic manufacturing license for a Patent or Proprietary formulation:
+
+Category I: Classical Formulations with minor excipient modifications:
+Requires published literature references on safety and textual citations from the First Schedule.
+
+Category II: Combinations of Ingredients from Authoritative Texts:
+For ingredients mentioned in the First Schedule books with a novel ratio or new combination:
+(a) Proof of safety: Acute toxicity studies (LD50) in appropriate animal models.
+(b) Proof of effectiveness: Published scientific evidence, observational clinical data, or pilot clinical study conducted as per Good Clinical Practice (GCP) guidelines for AYUSH drugs.
+
+Category III: Formulations containing Purified Phytochemical Fractions or Standardized Extracts:
+Requires CDSCO Phytopharmaceutical Drug regulatory approval under Chapter XA and the New Drugs and Clinical Trials Rules, 2019:
+- Characterization of chemical markers (>4 active fractions)
+- Phase I, II, and III clinical trials
+- Heavy metal, pesticide residue, and microbial limit certifications.
+
+---
+
+[FOOD SAFETY AND STANDARDS (AYURVEDA AAHAR) REGULATIONS, 2022]
+AUTHORITY: Food Safety and Standards Authority of India (FSSAI) & Ministry of AYUSH
+Gazette Notification F. No. Std/SP-05/A-1.2022:
+
+Key Demarcation Clauses:
+1. "Ayurveda Aahar" covers foods prepared in accordance with recipes or processes described in authoritative Ayurvedic books, intended for consumption as dietary support.
+2. Prohibited Claims: Ayurveda Aahar products SHALL NOT be labeled, marketed, or advertised as having curative, therapeutic, or diagnostic properties for any human disease or medical disorder.
+3. Permissible Claims: Physiological balance, wellness, digestive support, and traditional dietary Rasayana benefits are permitted.
+4. Logo Requirement: Mandatory display of the official FSSAI Ayurveda Aahar logo on all retail packaging.

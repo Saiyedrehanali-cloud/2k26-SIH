@@ -1,0 +1,43 @@
+================================================================================
+STATUTORY BODY: TRADITIONAL KNOWLEDGE DIGITAL LIBRARY (TKDL)
+JURISDICTION: INDIA / INTERNATIONAL EXAMINATION
+AUTHORITY: Council of Scientific and Industrial Research (CSIR) & Ministry of AYUSH
+OFFICIAL REFERENCE: https://www.tkdl.res.in
+================================================================================
+
+[PURPOSE AND MANDATE OF TKDL]
+The Traditional Knowledge Digital Library (TKDL) is an Indian digital repository that translates and digitizes ancient Ayurvedic, Unani, Siddha, and Yoga formulations into international patent classifications (IPC) in five international languages (English, German, French, Japanese, Spanish).
+TKDL has access agreements with leading global patent offices:
+- European Patent Office (EPO)
+- United States Patent and Trademark Office (USPTO)
+- Japan Patent Office (JPO)
+- Canadian Intellectual Property Office (CIPO)
+- German Patent and Trade Mark Office (DPMA)
+- UK Intellectual Property Office (UKIPO)
+- Controller General of Patents, Designs and Trademarks (CGPDTM, India)
+
+---
+
+[TKDL PRIOR ART DEFENSE MECHANISM UNDER SECTION 3(p)]
+1. Pre-Grant Interventions:
+TKDL patent examiners continuously monitor international patent gazettes for claims based on Indian medicinal flora. When a claim infringes traditional knowledge, a formal third-party submission is filed citing ancient Sanskrit/Persian verses translated with IPC concordance (A61K 36/00).
+
+2. Rebuttal Criteria for Patent Applicants:
+When an examiner issues a rejection citing a TKDL prior art entry:
+- The applicant CANNOT claim novelty merely by providing modern chemical names (e.g., Withaferin A for Ashwagandha or Curcumin for Turmeric).
+- The applicant must present empirical proof that the claimed ratio, extraction mechanism, or indication produces a surprising synergistic biological activity absent in classical texts.
+
+---
+
+[LANDMARK TKDL BIO-PIRACY CANCELLATIONS]
+
+1. Turmeric Patent Revocation (US Patent No. 5,401,504):
+- Claim: Use of turmeric (Curcuma longa) powder for wound healing.
+- Revocation Ground: CSIR demonstrated that turmeric application for cuts and wounds is documented extensively in ancient Ayurvedic compendia (Charaka Samhita, Sushruta Samhita) and the Indian Pharmacopoeia. USPTO re-examined and revoked all claims for lack of novelty.
+
+2. Neem Fungicidal Patent Revocation (European Patent No. 0436257):
+- Claim: Fungicidal effects of neem oil extracts (Azadirachta indica).
+- Revocation Ground: Opposed at the EPO by Indian organizations and CSIR. Overturned on appeal because the fungicidal properties and extraction techniques were traditional knowledge known and practiced across India for centuries.
+
+3. Ashwagandha Topical & Oral Formulations:
+- TKDL has preempted over 50 foreign patent applications attempting to claim the adaptogenic, anti-stress, and anti-inflammatory uses of Withania somnifera (Ashwagandha) extracts without novel synergistic evidence.

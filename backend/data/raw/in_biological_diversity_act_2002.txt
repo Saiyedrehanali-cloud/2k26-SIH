@@ -1,0 +1,49 @@
+================================================================================
+STATUTE: THE BIOLOGICAL DIVERSITY ACT, 2002 (ACT NO. 18 OF 2003)
+JURISDICTION: INDIA
+AUTHORITY: National Biodiversity Authority (NBA), Ministry of Environment, Forest & Climate Change
+OFFICIAL REFERENCE: http://nbaindia.org/uploaded/act/BDACT_2002.pdf
+================================================================================
+
+[CHAPTER II: REGULATION OF ACCESS TO BIOLOGICAL DIVERSITY]
+
+SECTION 3: Certain persons not to undertake Biodiversity related activities without approval of National Biodiversity Authority.
+(1) No person referred to in sub-section (2) shall, without previous approval of the National Biodiversity Authority, obtain any biological resource occurring in India or knowledge associated thereto for research or for commercial utilization or for bio-survey and bio-utilization.
+(2) The persons who shall be required to take the approval of the National Biodiversity Authority under sub-section (1) are the following, namely:—
+(a) a person who is not a citizen of India;
+(b) a citizen of India, who is a non-resident as defined in clause (30) of section 2 of the Income-tax Act, 1961;
+(c) a body corporate, association or organization—
+(i) not incorporated or registered in India; or
+(ii) incorporated or registered in India under any law for the time being in force which has any non-Indian participation in its share capital or management.
+
+---
+
+SECTION 6: Application for intellectual property rights not to be made without approval of National Biodiversity Authority.
+(1) "No person shall apply for any intellectual property right, by whatever name called, in or outside India for any invention based on any research or information on a biological resource obtained from India without obtaining the previous approval of the National Biodiversity Authority before making such application:
+Provided that if a person applies for a patent, permission of the National Biodiversity Authority may be obtained after the acceptance of the patent but before the sealing of the patent by the patent authority concerned:
+Provided further that the National Biodiversity Authority shall dispose of the application for permission made to it under this section within a period of ninety days from the date of receipt thereof."
+
+(2) The National Biodiversity Authority may, while granting the approval under this section, impose benefit sharing fee or royalty or conditions on the commercial utilization of the rights that have been granted.
+
+MANDATORY REGULATORY IMPLICATION FOR AYURVEDIC STARTUPS:
+Any Indian or foreign entity developing an Ayurvedic drug, extract, or formulation derived from Indian medicinal flora (such as Withania somnifera, Curcuma longa, Ocimum sanctum) MUST apply for Form III approval with the NBA. Failure to secure Section 6 approval makes any granted patent vulnerable to revocation under Section 64 of the Indian Patents Act, 1970.
+
+---
+
+SECTION 7: Prior intimation to State Biodiversity Board for obtaining biological resource for certain purposes.
+"No person, who is a citizen of India or a body corporate, association or organisation which is registered in India, shall obtain any biological resource for commercial utilisation, or bio-survey and bio-utilisation for commercial utilisation except after giving prior intimation to the State Biodiversity Board concerned:
+Provided that the provisions of this section shall not apply to the local people and communities of the area, including growers and cultivators of biodiversity, and vaids and hakims, who have been practising indigenous medicine."
+
+EXEMPTION CLAUSE:
+Traditional AYUSH practitioners (vaids and hakims) who practice indigenous medicine are statutorily exempt from prior intimation to the State Biodiversity Board under the proviso to Section 7. However, commercial pharmaceutical manufacturers utilizing wild botanicals are NOT exempt.
+
+---
+
+SECTION 21: Determination of equitable benefit sharing by National Biodiversity Authority.
+The National Biodiversity Authority shall ensure that the terms and conditions subject to which approval is granted under Section 19 or Section 6 secure equitable sharing of benefits arising out of the use of accessed biological resources, their by-products, innovations and practices associated with their use and applications and knowledge relating thereto in accordance with mutually agreed terms and conditions between the persons applying for such approval, local bodies concerned and the benefit claimers.
+Benefit sharing mechanisms include:
+(a) Grant of joint ownership of intellectual property rights to the NBA or benefit claimers;
+(b) Transfer of technology;
+(c) Location of production, research and development units in such areas which will facilitate the better living standards to the benefit claimers;
+(d) Association of Indian scientists, benefit claimers and the local people with research, development of the biological resources and bio-survey and bio-utilisation;
+(e) Payment of monetary compensation and other non-monetary benefits to the benefit claimers.

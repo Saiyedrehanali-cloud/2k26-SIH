@@ -1,0 +1,60 @@
+{
+  "corpus_version": "1.0.0",
+  "last_updated": "2024-09",
+  "documents": [
+    {
+      "id": "IN-PAT-1970",
+      "filename": "in_patents_act_1970.txt",
+      "jurisdiction": "india",
+      "title": "The Patents Act, 1970 (Act No. 39 of 1970 as amended)",
+      "authority": "Office of the Controller General of Patents, Designs and Trade Marks (IP India), Ministry of Commerce and Industry",
+      "sections_covered": ["Section 3(p)", "Section 3(d)", "Section 3(e)", "Section 10(4)(ii)", "Section 25"],
+      "official_url": "https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf"
+    },
+    {
+      "id": "IN-BDA-2002",
+      "filename": "in_biological_diversity_act_2002.txt",
+      "jurisdiction": "india",
+      "title": "The Biological Diversity Act, 2002 (Act No. 18 of 2003)",
+      "authority": "National Biodiversity Authority (NBA), Ministry of Environment, Forest and Climate Change (MoEFCC)",
+      "sections_covered": ["Section 3", "Section 6", "Section 7", "Section 19", "Section 21", "Section 24"],
+      "official_url": "http://nbaindia.org/uploaded/act/BDACT_2002.pdf"
+    },
+    {
+      "id": "IN-DCR-1945",
+      "filename": "in_drugs_and_cosmetics_rules_158b.txt",
+      "jurisdiction": "india",
+      "title": "Drugs and Cosmetics Rules, 1945 — Rule 158B & First Schedule (ASU Drugs)",
+      "authority": "Ministry of AYUSH & Central Drugs Standard Control Organization (CDSCO)",
+      "sections_covered": ["Rule 158B", "First Schedule", "Notification GSR 560(E)", "FSSAI Ayurveda Aahar Reg 2022"],
+      "official_url": "https://ayush.gov.in"
+    },
+    {
+      "id": "IN-TKDL-2023",
+      "filename": "in_tkdl_prior_art_guidelines.txt",
+      "jurisdiction": "india",
+      "title": "Traditional Knowledge Digital Library (TKDL) Prior Art Search & Defense Guidelines",
+      "authority": "Council of Scientific and Industrial Research (CSIR) & Ministry of AYUSH",
+      "sections_covered": ["TKDL IPC Concordance", "Section 3(p) Prosecution Guidelines", "Turmeric US5401504 Cancellation", "Neem EP0436257 Revocation"],
+      "official_url": "https://www.tkdl.res.in"
+    },
+    {
+      "id": "INT-TRIPS-1994",
+      "filename": "int_wto_trips_article_27.txt",
+      "jurisdiction": "international",
+      "title": "WTO Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS)",
+      "authority": "World Trade Organization (WTO)",
+      "sections_covered": ["Article 27.1", "Article 27.2", "Article 27.3(b)", "Article 29"],
+      "official_url": "https://www.wto.org/english/docs_e/legal_e/27-trips_04_e.htm"
+    },
+    {
+      "id": "INT-NAGOYA-2010",
+      "filename": "int_nagoya_protocol_abs.txt",
+      "jurisdiction": "international",
+      "title": "Nagoya Protocol on Access to Genetic Resources and the Fair and Equitable Sharing of Benefits Arising from their Utilization",
+      "authority": "Secretariat of the Convention on Biological Diversity (CBD), United Nations",
+      "sections_covered": ["Article 5", "Article 6", "Article 7", "Article 15", "Article 16", "Article 17"],
+      "official_url": "https://www.cbd.int/abs/text/"
+    }
+  ]
+}

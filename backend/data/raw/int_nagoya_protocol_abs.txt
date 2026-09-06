@@ -1,0 +1,34 @@
+================================================================================
+INTERNATIONAL TREATY: NAGOYA PROTOCOL ON ACCESS TO GENETIC RESOURCES AND THE FAIR AND EQUITABLE SHARING OF BENEFITS (ABS)
+JURISDICTION: INTERNATIONAL
+AUTHORITY: Secretariat of the Convention on Biological Diversity (CBD), United Nations
+OFFICIAL REFERENCE: https://www.cbd.int/abs/text/
+================================================================================
+
+ARTICLE 5: Fair and Equitable Benefit-Sharing
+"1. In accordance with Article 15, paragraphs 3 and 7 of the Convention, benefits arising from the utilization of genetic resources as well as subsequent applications and commercialization shall be shared in a fair and equitable way with the Party providing such resources that is the country of origin of such resources or a Party that has acquired the genetic resources in accordance with the Convention. Such sharing shall be upon mutually agreed terms (MAT)."
+
+---
+
+ARTICLE 6: Access to Genetic Resources
+"1. In the exercise of sovereign rights over natural resources, and subject to domestic access and benefit-sharing legislation or regulatory requirements, access to genetic resources for their utilization shall be subject to the prior informed consent (PIC) of the Party providing such resources that is the country of origin of such resources or a Party that has acquired the genetic resources in accordance with the Convention, unless otherwise determined by that Party."
+
+---
+
+ARTICLE 7: Access to Traditional Knowledge Associated with Genetic Resources
+"In accordance with domestic law, each Party shall take measures, as appropriate, with the aim of ensuring that traditional knowledge associated with genetic resources that is held by indigenous and local communities is accessed with the prior and informed consent or approval and involvement of these indigenous and local communities, and that mutually agreed terms have been established."
+
+---
+
+ARTICLE 15: Compliance with Domestic Legislation or Regulatory Requirements on Access and Benefit-Sharing
+"1. Each Party shall take appropriate, effective and proportionate legislative, administrative or policy measures to provide that genetic resources utilized within its jurisdiction have been accessed in accordance with prior informed consent and that mutually agreed terms have been established, as required by the domestic access and benefit-sharing legislation or regulatory requirements of the other Party."
+
+---
+
+ARTICLE 16: Compliance with Domestic Legislation on Traditional Knowledge
+"1. Each Party shall take appropriate, effective and proportionate legislative, administrative or policy measures to provide that traditional knowledge associated with genetic resources utilized within their jurisdiction has been accessed in accordance with prior informed consent or approval and involvement of indigenous and local communities and that mutually agreed terms have been established, as required by the domestic access and benefit-sharing legislation or regulatory requirements of the other Party where such indigenous and local communities are located."
+
+---
+
+ARTICLE 17: Monitoring the Utilization of Genetic Resources
+Mandates the establishment of checkpoints (such as national patent offices) to verify whether applicants filing patents based on genetic resources have obtained valid Internationally Recognized Certificates of Compliance (IRCC) or domestic ABS permits.

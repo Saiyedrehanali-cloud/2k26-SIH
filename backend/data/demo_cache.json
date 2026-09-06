@@ -1,0 +1,144 @@
+{
+  "india": [
+    {
+      "trigger": "ashwagandha",
+      "question": "Can I patent an Ashwagandha and Curcumin synergistic polyherbal extract in India?",
+      "answer": "Under Section 3(p) of the Indian Patents Act, 1970, inventions that are traditional knowledge or aggregations/duplications of known properties of traditionally known components are strictly non-patentable. However, polyherbal formulations may overcome this exclusion if you substantiate surprising synergistic efficacy (demonstrating that the combination bio-activity statistically exceeds the additive sum of individual components) under Section 3(e). Furthermore, prior to commercialization or patent sealing, mandatory Form III approval from the National Biodiversity Authority (NBA) under Section 6 of the Biological Diversity Act, 2002 is required.",
+      "citations": [
+        {
+          "source": "The Patents Act, 1970 — Section 3(p) (Inventions Not Patentable - Traditional Knowledge)",
+          "ref_id": "IN-PAT-1970-SEC3P",
+          "url": "https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf"
+        },
+        {
+          "source": "The Patents Act, 1970 — Section 3(e) (Admixtures & Synergism Standards)",
+          "ref_id": "IN-PAT-1970-SEC3E",
+          "url": "https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf"
+        },
+        {
+          "source": "Biological Diversity Act, 2002 — Section 6 (Mandatory NBA Approval for IPR)",
+          "ref_id": "IN-BDA-2002-SEC6",
+          "url": "http://nbaindia.org/uploaded/act/BDACT_2002.pdf"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "trigger": "nba approval",
+      "question": "What approvals are needed from the National Biodiversity Authority (NBA) under Section 6?",
+      "answer": "Under Section 6(1) of the Biological Diversity Act, 2002, no person shall apply for any intellectual property right, in or outside India, for any invention based on any research or information on a biological resource obtained from India without previous approval of the National Biodiversity Authority (Form III). Under Section 6(2), the NBA may impose benefit-sharing fees or royalties. Under Section 10(4)(d)(ii) of the Patents Act, failure to disclose the Indian geographical origin of biological resources is ground for patent revocation.",
+      "citations": [
+        {
+          "source": "Biological Diversity Act, 2002 — Section 6 (Application for IPR)",
+          "ref_id": "IN-BDA-2002-SEC6",
+          "url": "http://nbaindia.org/uploaded/act/BDACT_2002.pdf"
+        },
+        {
+          "source": "Biological Diversity Act, 2002 — Section 21 (Equitable Benefit Sharing)",
+          "ref_id": "IN-BDA-2002-SEC21",
+          "url": "http://nbaindia.org/uploaded/act/BDACT_2002.pdf"
+        },
+        {
+          "source": "The Patents Act, 1970 — Section 10(4)(d)(ii) (Mandatory Biological Source Disclosure)",
+          "ref_id": "IN-PAT-1970-SEC10",
+          "url": "https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "trigger": "rule 158b",
+      "question": "What are the regulatory licensing requirements under Rule 158B for a Proprietary Ayurvedic Medicine?",
+      "answer": "Under Rule 158B of the Drugs and Cosmetics Rules, 1945, Patent or Proprietary Ayurvedic medicines (defined under Section 3(h)) require differentiated regulatory proof based on composition: (1) Category I formulations with minor classical excipients require published literature evidence; (2) Category II combinations with new ratios require acute toxicity (LD50) safety data and pilot GCP clinical effectiveness evidence; (3) Category III purified phytochemical fractions require full CDSCO phytopharmaceutical approvals under Chapter XA.",
+      "citations": [
+        {
+          "source": "Drugs and Cosmetics Rules, 1945 — Rule 158B (Issue of License for ASU Medicines)",
+          "ref_id": "IN-DCR-1945-RULE158B",
+          "url": "https://ayush.gov.in"
+        },
+        {
+          "source": "Drugs and Cosmetics Act, 1940 — Section 3(h) (Patent or Proprietary Medicine)",
+          "ref_id": "IN-DCA-1940-SEC3H",
+          "url": "https://ayush.gov.in"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "trigger": "tkdl",
+      "question": "How does the TKDL database defend Indian medicinal formulations against bio-piracy?",
+      "answer": "The Traditional Knowledge Digital Library (TKDL), established jointly by CSIR and the Ministry of AYUSH, translates ancient classical compendia (Charaka, Sushruta, AFI) into international patent classifications (IPC) in 5 global languages. The CSIR-TKDL pre-grant opposition unit systematically monitors patent offices worldwide (USPTO, EPO) and files third-party observations under Patents Act § 25(1)(k) to invalidate non-novel claims (as achieved in the landmark Turmeric US5401504 cancellation and Neem EP0436257 revocation).",
+      "citations": [
+        {
+          "source": "Traditional Knowledge Digital Library (TKDL) Prior Art Defense Guidelines",
+          "ref_id": "IN-TKDL-2023-DEFENSE",
+          "url": "https://www.tkdl.res.in"
+        },
+        {
+          "source": "The Patents Act, 1970 — Section 25(1)(k) (Anticipation by Traditional Knowledge)",
+          "ref_id": "IN-PAT-1970-SEC25",
+          "url": "https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf"
+        }
+      ],
+      "confidence": "high"
+    }
+  ],
+  "international": [
+    {
+      "trigger": "nagoya protocol",
+      "question": "What Access and Benefit-Sharing (ABS) requirements apply under the Nagoya Protocol for international PCT patents?",
+      "answer": "Under Articles 5, 6, 7, and 15 of the Nagoya Protocol, any cross-border commercialization or patent filing utilizing indigenous genetic resources or associated traditional knowledge requires compliance with Access and Benefit-Sharing (ABS). Applicants must secure Prior Informed Consent (PIC) from the indigenous provider country authority (e.g., India's NBA) and execute Mutually Agreed Terms (MAT) specifying fair and equitable benefit-sharing before patent sealing.",
+      "citations": [
+        {
+          "source": "Nagoya Protocol on ABS — Article 6 (Access to Genetic Resources & PIC)",
+          "ref_id": "INT-NAGOYA-2010-ART6",
+          "url": "https://www.cbd.int/abs/text/"
+        },
+        {
+          "source": "Nagoya Protocol on ABS — Article 5 & 15 (Fair Benefit-Sharing & Compliance)",
+          "ref_id": "INT-NAGOYA-2010-ART5",
+          "url": "https://www.cbd.int/abs/text/"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "trigger": "trips article 27",
+      "question": "What does WTO TRIPS Article 27 state regarding patentability of plants and therapeutic methods?",
+      "answer": "Under Article 27.2 of the WTO TRIPS Agreement, members may exclude from patentability inventions necessary to protect human, animal or plant life or health. Under Article 27.3(a), diagnostic, therapeutic and surgical methods for the treatment of humans or animals may be excluded. Under Article 27.3(b), plants and animals other than micro-organisms are excludable, provided members provide protection for plant varieties either by patents or by an effective sui generis system.",
+      "citations": [
+        {
+          "source": "WTO TRIPS Agreement — Article 27.2 (Exclusions to Protect Public Morals & Health)",
+          "ref_id": "INT-TRIPS-1994-ART272",
+          "url": "https://www.wto.org/english/docs_e/legal_e/27-trips_04_e.htm"
+        },
+        {
+          "source": "WTO TRIPS Agreement — Article 27.3(b) (Plant Varieties & Sui Generis Protection)",
+          "ref_id": "INT-TRIPS-1994-ART273B",
+          "url": "https://www.wto.org/english/docs_e/legal_e/27-trips_04_e.htm"
+        }
+      ],
+      "confidence": "high"
+    }
+  ],
+  "trick_questions": [
+    {
+      "trigger": "foreign patent without nba",
+      "question": "Can a foreign multinational file a patent on Indian neem without NBA clearance?",
+      "answer": "No. Under Section 3 and Section 6 of the Biological Diversity Act, 2002, non-citizens, non-residents, and foreign-incorporated entities are strictly prohibited from accessing Indian biological resources or applying for any IPR globally without prior approval of the National Biodiversity Authority (NBA). Any patent granted in violation of this requirement is subject to mandatory revocation under Section 64 of the Indian Patents Act, 1970 and legal opposition by CSIR-TKDL.",
+      "citations": [
+        {
+          "source": "Biological Diversity Act, 2002 — Section 3 & Section 6",
+          "ref_id": "IN-BDA-2002-SEC3SEC6",
+          "url": "http://nbaindia.org/uploaded/act/BDACT_2002.pdf"
+        },
+        {
+          "source": "The Patents Act, 1970 — Section 64 (Revocation of Patents)",
+          "ref_id": "IN-PAT-1970-SEC64",
+          "url": "https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

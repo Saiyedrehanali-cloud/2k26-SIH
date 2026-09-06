@@ -1,0 +1,53 @@
+================================================================================
+STATUTE: THE PATENTS ACT, 1970 (ACT NO. 39 OF 1970)
+JURISDICTION: INDIA
+AUTHORITY: Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM), India
+OFFICIAL REFERENCE: https://ipindia.gov.in/writereaddata/Portal/IPOAct/1_31_1_patent-act-1970-11march2015.pdf
+================================================================================
+
+[CHAPTER II: INVENTIONS NOT PATENTABLE]
+
+SECTION 3: What are not inventions.
+The following are not inventions within the meaning of this Act,—
+
+SECTION 3(p) [Traditional Knowledge Exclusion]:
+"an invention which in effect is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components."
+
+STATUTORY EXPLANATION & GUIDANCE FOR AYUSH INVENTIONS:
+Under Section 3(p), any formulation, compound, composition, or process that relies upon or extracts the established curative, therapeutic, cosmetic, or nutritional attributes of botanicals or substances already documented in traditional knowledge (including Ayurveda, Siddha, Unani, or tribal folklore) is excluded from patentability.
+To overcome Section 3(p), the applicant must demonstrate:
+(a) A synergistic interaction between components exceeding the simple mathematical sum of the individual ingredients, supported by comparative bio-activity or pharmacodynamic data.
+(b) A non-obvious, inventive modification or extraction technique that generates a novel technical effect not known or practiced in traditional heritage.
+
+---
+
+SECTION 3(d) [Incremental Innovations and Efficacy Standard]:
+"the mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant.
+Explanation.—For the purposes of this clause, salts, esters, ethers, polymorphs, metabolites, pure form, particle size, isomers, mixtures of isomers, complexes, combinations and other derivatives of known substance shall be considered to be the same substance, unless they differ significantly in properties with regard to efficacy."
+
+---
+
+SECTION 3(e) [Admixtures]:
+"a substance obtained by a mere admixture resulting only in the aggregation of the properties of the components thereof or a process for producing such substance."
+In polyherbal Ayurvedic formulations, mixing two or more classical herbs (e.g., Ashwagandha and Curcumin) constitutes a mere admixture under Section 3(e) unless clear evidence of synergistic therapeutic efficacy is established.
+
+---
+
+[CHAPTER III: APPLICATIONS FOR PATENTS]
+
+SECTION 10: Contents of specifications.
+Section 10(4)(d)(ii) [Mandatory Biological Source Disclosure]:
+"Every complete specification shall—
+(d) be accompanied by an abstract to provide technical information on the invention:
+Provided that—
+(ii) if the applicant mentions a biological material in the specification which is obtained from India, the application shall disclose the source and geographical origin of the biological material in the specification."
+Failure to disclose the geographical origin of biological resources obtained in India is a ground for pre-grant or post-grant opposition and patent revocation under Section 64.
+
+---
+
+[CHAPTER V: OPPOSITION PROCEEDINGS TO GRANT OF PATENTS]
+
+SECTION 25: Opposition to the patent.
+Section 25(1)(k) & Section 25(2)(k) [Anticipation by Traditional Knowledge]:
+It shall be a ground for opposition (pre-grant or post-grant) that the invention so far as claimed in any claim of the complete specification was anticipated having regard to the knowledge, oral or otherwise, available within any local or indigenous community in India or elsewhere.
+Pre-grant oppositions against foreign and domestic patent claims are routinely filed by the CSIR-TKDL unit on this exact statutory ground.

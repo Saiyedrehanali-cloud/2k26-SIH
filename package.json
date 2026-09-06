@@ -1,0 +1,15 @@
+{
+  "name": "ip-sakti-sahayak",
+  "version": "1.0.0",
+  "description": "IP-SAKTI Sahayak — Legal AI Assistant for Ministry of Ayush",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend run start",
+    "start:backend": "python -m uvicorn backend.main:app --reload --port 8000",
+    "start:all": "start powershell -NoExit -Command \"python -m uvicorn backend.main:app --reload --port 8000\" && npm --prefix frontend run dev"
+  },
+  "keywords": ["ayush", "rag", "legal-ai", "ipr"],
+  "author": "",
+  "license": "MIT"
+}
