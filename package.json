@@ -1,10 +1,14 @@
 {
   "name": "ip-sakti-sahayak",
   "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
   "description": "IP-SAKTI Sahayak — Legal AI Assistant for Ministry of Ayush",
   "scripts": {
     "dev": "npm --prefix frontend run dev",
-    "build": "npm --prefix frontend run build",
+    "build": "npm --prefix frontend run build && node -e \"const fs=require('fs'); fs.cpSync('frontend/.next', '.next', {recursive: true});\"",
     "start": "npm --prefix frontend run start",
     "start:backend": "python -m uvicorn backend.main:app --reload --port 8000",
     "start:all": "start powershell -NoExit -Command \"python -m uvicorn backend.main:app --reload --port 8000\" && npm --prefix frontend run dev"
