@@ -1,10 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ChatMessage } from "../lib/types";
-import CitationDrawer from "./CitationDrawer";
-import ConfidenceBadge from "./ConfidenceBadge";
-import { Bot, User, AlertOctagon, PhoneCall, Shield } from "lucide-react";
 
 interface ChatBubbleProps {
   message: ChatMessage;
@@ -13,123 +10,88 @@ interface ChatBubbleProps {
 
 export const ChatBubble: React.FC<ChatBubbleProps> = ({ message, onEscalate }) => {
   const isUser = message.sender === "user";
+  const [showCitations, setShowCitations] = useState(false);
 
+  // 1. User Message: light gray pill, plain text, no bold elements
   if (isUser) {
     return (
-      <div className="flex justify-end my-4">
-        <div className="flex items-start gap-3 max-w-2xl">
-          <div className="flex flex-col items-end">
-            <div className="bg-teal text-white px-5 py-3.5 rounded-2xl rounded-tr-sm shadow-sm leading-relaxed text-sm font-medium">
-              {message.text}
-            </div>
-            <span className="text-[11px] text-gray-400 mt-1 mr-1">{message.timestamp}</span>
-          </div>
-          <div className="w-8 h-8 rounded-full bg-teal-light border border-teal-border flex items-center justify-center text-teal flex-shrink-0 mt-0.5">
-            <User className="w-4 h-4" />
-          </div>
+      <div className="flex justify-end my-3 fade-in">
+        <div className="bg-slate-100 text-slate-900 px-4 py-2.5 rounded-2xl max-w-[85%] text-sm leading-relaxed font-normal">
+          {message.text}
         </div>
       </div>
     );
   }
 
-  // Low-Confidence / Refusal state card (per ui_ux_guidelines.md §4.4)
+  // 2. Low-Confidence / Refusal state: honest plain text, no dashed borders or decorative cards
   if (message.isRefusal || message.confidence === "low") {
     return (
-      <div className="flex justify-start my-4">
-        <div className="flex items-start gap-3 max-w-3xl w-full">
-          <div className="w-8 h-8 rounded-full bg-orange-light border border-orange/40 flex items-center justify-center text-orange flex-shrink-0 mt-1">
-            <AlertOctagon className="w-4 h-4" />
-          </div>
-          <div className="flex-1">
-            <div className="bg-white border-2 border-dashed border-orange/60 rounded-2xl p-5 shadow-bento space-y-4">
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-orange/20 pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-orange flex items-center gap-1.5">
-                    <Shield className="w-4 h-4" />
-                    Regulatory Guardrail Triggered
-                  </span>
-                </div>
-                <ConfidenceBadge level="low" />
-              </div>
-
-              {/* Body */}
-              <p className="text-sm text-charcoal leading-relaxed">
-                {message.text}
-              </p>
-
-              {/* Safety notice callout */}
-              <div className="p-3 bg-orange-light/80 rounded-xl border border-orange/30 text-xs text-charcoal">
-                <p className="font-semibold text-orange-hover mb-1">Zero-Hallucination Policy Notice:</p>
-                <p className="text-gray-600">
-                  IP-SAKTI Sahayak blocks AI generation when verifiable statutory citations cannot be confirmed in the active jurisdiction corpus.
-                </p>
-              </div>
-
-              {/* Escalation Button */}
-              <div className="pt-2 flex items-center justify-between">
-                <span className="text-xs text-gray-500 font-medium">
-                  Need a binding legal assessment?
-                </span>
-                <button
-                  type="button"
-                  onClick={onEscalate}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-orange text-white hover:bg-orange-hover text-xs font-semibold rounded-xl transition-all shadow-sm cursor-pointer"
-                >
-                  <PhoneCall className="w-3.5 h-3.5" />
-                  <span>Consult an IP Facilitator</span>
-                </button>
-              </div>
-            </div>
-            <span className="text-[11px] text-gray-400 mt-1 ml-1 inline-block">{message.timestamp}</span>
+      <div className="flex justify-start my-5 fade-in">
+        <div className="border-l-2 border-slate-200 pl-4 py-0.5 space-y-2 max-w-2xl w-full text-slate-900 text-sm leading-relaxed">
+          <p>
+            {message.text || "I don't have a confident source for this — you may want to consult a facilitator."}
+          </p>
+          <div>
+            <button
+              type="button"
+              onClick={onEscalate}
+              className="text-xs text-blue-600 hover:text-blue-700 underline cursor-pointer"
+            >
+              Talk to a facilitator
+            </button>
           </div>
         </div>
       </div>
     );
   }
 
-  // Standard verified assistant card
+  const citationsCount = message.citations ? message.citations.length : 0;
+  const confidenceLabel = message.confidence ? `${message.confidence} confidence` : "high confidence";
+
+  // 3. Standard Assistant Message: plain text with subtle left border, single quiet line of sources
   return (
-    <div className="flex justify-start my-4">
-      <div className="flex items-start gap-3 max-w-3xl w-full">
-        <div className="w-8 h-8 rounded-full bg-teal/10 border border-teal/20 flex items-center justify-center text-teal flex-shrink-0 mt-1">
-          <Bot className="w-4 h-4" />
+    <div className="flex justify-start my-5 fade-in">
+      <div className="border-l-2 border-slate-200 pl-4 py-0.5 space-y-2 max-w-2xl w-full text-slate-900 text-sm leading-relaxed">
+        <div className="whitespace-pre-line text-slate-900 font-normal">
+          {message.text}
         </div>
-        <div className="flex-1">
-          <div className="bg-card border border-border rounded-2xl p-5 shadow-bento space-y-3">
-            {/* Top metadata row */}
-            <div className="flex items-center justify-between border-b border-border/80 pb-2.5">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-teal tracking-wide flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-teal" />
-                  IP-SAKTI Legal Assessment
-                </span>
-                <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-gray-100 text-gray-600 border border-gray-200">
-                  {message.jurisdiction === "india" ? "Jurisdiction: India" : "Jurisdiction: International"}
-                </span>
-              </div>
-              {message.confidence && <ConfidenceBadge level={message.confidence} />}
-            </div>
 
-            {/* Answer prose */}
-            <div className="text-sm text-charcoal leading-relaxed whitespace-pre-line font-normal">
-              {message.text}
-            </div>
+        {/* Single small line of muted gray text replacing drawer + badge */}
+        {citationsCount > 0 && (
+          <div className="pt-1">
+            <button
+              type="button"
+              onClick={() => setShowCitations(!showCitations)}
+              className="text-xs text-slate-500 hover:text-slate-700 transition-colors cursor-pointer inline-flex items-center gap-1.5 select-none"
+            >
+              <span>{citationsCount} {citationsCount === 1 ? "source" : "sources"} · {confidenceLabel}</span>
+              <span className="text-[10px] text-slate-400">{showCitations ? "▴" : "▾"}</span>
+            </button>
 
-            {/* Citations Drawer (FR3: rendered as a distinct visual element, separated by a divider) */}
-            {message.citations && message.citations.length > 0 && (
-              <CitationDrawer citations={message.citations} />
-            )}
-
-            {/* Server-injected disclaimer */}
-            {message.disclaimer && (
-              <div className="pt-2 text-[11px] text-gray-400 italic border-t border-gray-100">
-                {message.disclaimer}
-              </div>
+            {showCitations && (
+              <ul className="mt-2 space-y-1.5 text-xs text-slate-600 border-t border-slate-100 pt-2">
+                {message.citations!.map((c, idx) => (
+                  <li key={idx} className="flex items-baseline gap-1.5">
+                    <span className="text-slate-400 select-none">•</span>
+                    <span>
+                      {c.source}
+                      {c.url && (
+                        <a
+                          href={c.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-700 underline ml-1.5"
+                        >
+                          link
+                        </a>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
-          <span className="text-[11px] text-gray-400 mt-1 ml-1 inline-block">{message.timestamp}</span>
-        </div>
+        )}
       </div>
     </div>
   );
