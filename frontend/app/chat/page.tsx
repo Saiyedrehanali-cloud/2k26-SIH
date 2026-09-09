@@ -4,48 +4,52 @@ import React, { useState, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import JurisdictionToggle from "../../components/JurisdictionToggle";
+import DisclaimerBanner from "../../components/DisclaimerBanner";
 import ChatBubble from "../../components/ChatBubble";
-import InlineClassifier from "../../components/InlineClassifier";
+import EscalationButton from "../../components/EscalationButton";
+import FormulationClassifierModal from "../../components/FormulationClassifierModal";
 import {
   ChatMessage,
   Jurisdiction,
   ClassificationType,
+  ClassificationResult,
 } from "../../lib/types";
 import {
   MOCK_SEED_MESSAGES,
   sendChatMessage,
 } from "../../lib/api";
-import { ArrowUp, RotateCcw, FileDown } from "lucide-react";
+import {
+  Scale,
+  Send,
+  Sparkles,
+  ArrowLeft,
+  RotateCcw,
+  Tag,
+  Info,
+  ChevronRight,
+  ShieldCheck,
+  FileDown,
+  FileText,
+} from "lucide-react";
 
 function ChatContent() {
   const searchParams = useSearchParams();
-  const initialQuery = searchParams.get("q");
   const initialClassification = searchParams.get("classification") as ClassificationType | null;
 
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction>("india");
   const [classification, setClassification] = useState<ClassificationType | null>(
     initialClassification || "Proprietary Medicine"
   );
-  const [showInlineClassifier, setShowInlineClassifier] = useState(false);
+  const [isClassifierOpen, setIsClassifierOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>(MOCK_SEED_MESSAGES);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showFacilitatorModal, setShowFacilitatorModal] = useState(false);
-  const hasHandledInitialQuery = useRef(false);
   const chatBottomRef = useRef<HTMLDivElement>(null);
 
   // Scroll to bottom on new message
   useEffect(() => {
     chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isLoading, showInlineClassifier]);
-
-  // Handle incoming query from landing page
-  useEffect(() => {
-    if (initialQuery && !hasHandledInitialQuery.current) {
-      hasHandledInitialQuery.current = true;
-      handleSendMessage(initialQuery);
-    }
-  }, [initialQuery]);
+  }, [messages, isLoading]);
 
   const handleSendMessage = async (textToSend?: string) => {
     const text = textToSend || inputValue;
@@ -85,15 +89,6 @@ function ChatContent() {
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (err) {
       console.error("Error sending message:", err);
-      const errorMessage: ChatMessage = {
-        id: `msg-${Date.now()}-error`,
-        sender: "assistant",
-        text: "I was unable to retrieve statutory provisions at this moment. Please check your connection or try again.",
-        confidence: "low",
-        jurisdiction,
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -108,17 +103,17 @@ function ChatContent() {
 
   const handleResetChat = () => {
     setMessages([]);
-    setShowInlineClassifier(false);
   };
 
   const handleExportReport = () => {
     const timestamp = new Date().toLocaleString();
-    let report = `# IP-SAKTI Sahayak — Legal Advisory Summary\n`;
-    report += `Generated: ${timestamp}\n`;
-    report += `Active Jurisdiction: ${jurisdiction.toUpperCase()}\n`;
-    report += `Formulation Type: ${classification || "Unspecified"}\n\n`;
+    let report = `# IP-SAKTI Sahayak — Preliminary Legal Advisory Memo\n`;
+    report += `**Ministry of Ayush | Government of India**\n`;
+    report += `**Generated:** ${timestamp}\n`;
+    report += `**Active Jurisdiction:** ${jurisdiction.toUpperCase()}\n`;
+    report += `**Formulation Classification:** ${classification || "Not Specified"}\n\n`;
     report += `---\n\n`;
-    report += `## Statutory References\n\n`;
+    report += `## Statutory Citations & Authorities Referenced\n\n`;
 
     const allCitations: { source: string; ref_id: string; url?: string | null }[] = [];
     const seenRefs = new Set<string>();
@@ -132,197 +127,237 @@ function ChatContent() {
     });
 
     if (allCitations.length === 0) {
-      report += `No direct statutory citations referenced in this conversation.\n\n`;
+      report += `*No statutory citations recorded in current session.*\n\n`;
     } else {
       allCitations.forEach((c, idx) => {
-        report += `${idx + 1}. ${c.source} (${c.ref_id})\n   URL: ${c.url || "Government of India Repository"}\n\n`;
+        report += `${idx + 1}. **${c.source}** (Ref: \`${c.ref_id}\`)\n   - Official Reference: ${c.url || "Government of India Repository"}\n\n`;
       });
     }
 
-    report += `---\n\n## Conversation Transcript\n\n`;
+    report += `---\n\n## Assessment Transcript\n\n`;
     messages.forEach((msg) => {
-      const sender = msg.sender === "user" ? "Applicant" : "IP-SAKTI Legal AI";
-      report += `[${msg.timestamp || ""}] ${sender}:\n${msg.text}\n\n`;
+      const sender = msg.sender === "user" ? "Researcher / Applicant" : "IP-SAKTI Legal AI";
+      report += `### [${msg.timestamp || ""}] ${sender}\n${msg.text}\n\n`;
+      if (msg.confidence) {
+        report += `*Confidence Level:* **${msg.confidence.toUpperCase()}** | *Corpus:* ${msg.jurisdiction || jurisdiction}\n\n`;
+      }
     });
 
     report += `---\n\n`;
-    report += `Notice: Informational guidance only, derived from authentic statutory texts. Not formal legal advice.\n`;
+    report += `### Statutory Disclaimer\n`;
+    report += `> This advisory summary is algorithmically generated by IP-SAKTI Sahayak from authenticated statutory texts (Patents Act 1970, Biological Diversity Act 2002, Drugs & Cosmetics Rules 158B, TKDL prior art, and WTO TRIPS). It provides preliminary informational guidance and does not constitute formal legal counsel or a binding certificate of patentability. For official patent filing or commercial licensing, consult an Ayush IP Facilitator or registered patent attorney.\n`;
 
     const blob = new Blob([report], { type: "text/markdown;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `IP-SAKTI-Summary-${Date.now()}.md`;
+    a.download = `IP-SAKTI-Advisory-Memo-${Date.now()}.md`;
     a.click();
     URL.revokeObjectURL(url);
   };
 
+  const suggestedQueries = jurisdiction === "india"
+    ? [
+        "Can I patent an Ashwagandha and Curcumin synergistic polyherbal extract in India?",
+        "What approvals are needed from the National Biodiversity Authority (NBA) under Section 6?",
+        "What are the regulatory licensing requirements under Rule 158B for a Proprietary Ayurvedic Medicine?",
+        "Can a foreign multinational file a patent on Indian neem without NBA clearance?",
+        "Out of scope query: How do I bake a chocolate cake? (Refusal Guardrail)",
+      ]
+    : [
+        "What Access and Benefit-Sharing (ABS) requirements apply under the Nagoya Protocol for international PCT patents?",
+        "What does WTO TRIPS Article 27 state regarding patentability of plants and therapeutic methods?",
+        "Can a foreign multinational file a patent on Indian neem without NBA clearance?",
+        "Out of scope query: Explain foreign corporate income tax? (Refusal Guardrail)",
+      ];
+
   return (
-    <div className="min-h-screen bg-page text-primary flex flex-col justify-between selection:bg-blue-100">
-      {/* 1. Quiet, minimal top bar */}
-      <header className="border-b border-slate-200 bg-page/80 backdrop-blur-sm sticky top-0 z-20">
-        <div className="max-w-2xl w-full mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="text-xs font-semibold text-slate-800 hover:text-slate-900 tracking-tight"
-            >
-              IP-SAKTI Sahayak
-            </Link>
-            <span className="text-slate-300">/</span>
-            {/* Small unobtrusive jurisdiction control */}
-            <JurisdictionToggle
-              currentJurisdiction={jurisdiction}
-              onJurisdictionChange={(j) => setJurisdiction(j)}
-            />
-          </div>
+    <div className="flex flex-col h-screen max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 bg-background">
+      {/* 1. Header Bar (Bento style) */}
+      <header className="py-4 border-b border-border flex flex-col md:flex-row items-center justify-between gap-4 flex-shrink-0">
+        <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+          <Link
+            href="/"
+            className="flex items-center gap-2 group text-charcoal hover:text-teal transition-colors"
+          >
+            <div className="w-9 h-9 rounded-xl bg-teal text-white flex items-center justify-center font-bold shadow-sm group-hover:scale-105 transition-transform">
+              <Scale className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-sm tracking-tight text-charcoal">IP-SAKTI Sahayak</span>
+                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-teal-light text-teal border border-teal-border">
+                  AYUSH RAG
+                </span>
+              </div>
+              <p className="text-[11px] text-charcoal-muted">Statutory IP & Biodiversity Assistant</p>
+            </div>
+          </Link>
 
-          <div className="flex items-center gap-3 text-xs text-slate-500">
-            {/* Inline classifier toggle chip */}
-            <button
-              type="button"
-              onClick={() => setShowInlineClassifier(!showInlineClassifier)}
-              className="hover:text-slate-900 transition-colors cursor-pointer"
-              title="Change formulation type"
-            >
-              {classification || "Formulation"} ▾
-            </button>
+          {/* Classification Chip (FR1: persists in session and shown as chip in chat header) */}
+          {classification && (
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-orange-light border border-orange-border rounded-xl text-xs">
+              <Tag className="w-3.5 h-3.5 text-orange" />
+              <span className="text-gray-500 font-medium">Formulation:</span>
+              <span className="font-bold text-orange-hover">{classification}</span>
+              <button
+                type="button"
+                onClick={() => setIsClassifierOpen(true)}
+                className="text-[10px] text-gray-400 hover:text-orange underline ml-1 cursor-pointer"
+                title="Change formulation classification"
+              >
+                Change
+              </button>
+            </div>
+          )}
+        </div>
 
-            <button
-              type="button"
-              onClick={handleExportReport}
-              className="hover:text-slate-900 transition-colors cursor-pointer p-1"
-              title="Export conversation summary"
-            >
-              <FileDown className="w-3.5 h-3.5" />
-            </button>
+        {/* Center: Jurisdiction Toggle (FR2 & Architecture §4: visually unmistakable) */}
+        <div className="flex items-center gap-3">
+          <JurisdictionToggle
+            currentJurisdiction={jurisdiction}
+            onJurisdictionChange={(j) => setJurisdiction(j)}
+          />
+        </div>
 
-            <button
-              type="button"
-              onClick={handleResetChat}
-              className="hover:text-slate-900 transition-colors cursor-pointer p-1"
-              title="Clear conversation"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
-          </div>
+        {/* Right Actions: Export Memo, Escalation CTA & Reset */}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleExportReport}
+            className="inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-teal-light text-charcoal hover:text-teal border border-gray-200 hover:border-teal-border rounded-xl text-xs font-semibold shadow-xs transition-all cursor-pointer"
+            title="Download Official Legal Advisory Memo"
+          >
+            <FileDown className="w-3.5 h-3.5 text-teal" />
+            <span className="hidden sm:inline">Export Advisory Memo</span>
+          </button>
+          <EscalationButton />
+          <button
+            type="button"
+            onClick={handleResetChat}
+            className="p-2 rounded-xl text-gray-400 hover:text-gray-600 hover:bg-gray-100 border border-gray-200 transition-colors cursor-pointer"
+            title="Reset Chat Session"
+          >
+            <RotateCcw className="w-4 h-4" />
+          </button>
         </div>
       </header>
 
-      {/* 2. Single vertical conversation thread (max-w ~680px) */}
-      <main className="flex-1 max-w-2xl w-full mx-auto px-4 py-8 overflow-y-auto">
-        {/* Inline Classifier prompt if triggered */}
-        {showInlineClassifier && (
-          <div className="mb-6">
-            <InlineClassifier
-              currentClassification={classification}
-              onSelect={(cat) => {
-                setClassification(cat);
-                setShowInlineClassifier(false);
-              }}
-            />
+      {/* 2. Main Chat Area */}
+      <main className="flex-1 overflow-y-auto py-6 space-y-4 pr-1">
+        {/* Jurisdiction Active Context Banner */}
+        <div className="bg-white rounded-2xl p-4 border border-border shadow-xs flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-gray-100 text-charcoal flex items-center justify-center">
+              <ShieldCheck className="w-4 h-4 text-orange" />
+            </div>
+            <div>
+              <h2 className="text-xs font-bold text-charcoal">
+                Active Legal Corpus: {jurisdiction === "india" ? "India (Domestic Statutory Law)" : "International (TRIPS & Nagoya Framework)"}
+              </h2>
+              <p className="text-[11px] text-charcoal-muted">
+                {jurisdiction === "india"
+                  ? "Queries search Patents Act 1970 § 3(p), Biological Diversity Act 2002 § 6, Drugs & Cosmetics Rules 158B, and TKDL prior art."
+                  : "Queries search WTO TRIPS Agreement Art 27.2/27.3(b), Nagoya Protocol on ABS Articles 6/15, and PCT international filing rules."}
+              </p>
+            </div>
           </div>
-        )}
+          <span className="text-[10px] font-mono uppercase bg-orange-light text-orange font-bold px-2 py-1 rounded-md border border-orange-border">
+            Strict Filter On
+          </span>
+        </div>
 
-        {/* Message Thread */}
+        {/* Messages List */}
         {messages.length === 0 ? (
-          <div className="text-center py-20 space-y-2">
-            <p className="text-sm text-slate-600">Start a conversation.</p>
-            <p className="text-xs text-slate-400">
-              Inquire about Indian patent exclusions under Section 3(p), Biological Diversity Act clearance, or international Nagoya protocol rules.
+          <div className="text-center py-16 space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-teal-light text-teal flex items-center justify-center mx-auto">
+              <Scale className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-bold text-charcoal">How can IP-SAKTI Sahayak assist your formulation?</h3>
+            <p className="text-xs text-charcoal-muted max-w-md mx-auto">
+              Ask any question regarding patentability under Indian law or international biodiversity access compliance.
             </p>
           </div>
         ) : (
-          <div className="space-y-6">
-            {messages.map((msg) => (
-              <ChatBubble
-                key={msg.id}
-                message={msg}
-                onEscalate={() => setShowFacilitatorModal(true)}
-              />
-            ))}
-          </div>
+          messages.map((msg) => (
+            <ChatBubble
+              key={msg.id}
+              message={msg}
+              onEscalate={() => {
+                const btn = document.querySelector('[data-escalate-trigger]') as HTMLButtonElement;
+                if (btn) btn.click();
+              }}
+            />
+          ))
         )}
 
-        {/* Quiet Loading State */}
+        {/* Loading Indicator */}
         {isLoading && (
-          <div className="flex justify-start my-5 pl-4 border-l-2 border-slate-200 fade-in">
-            <span className="text-xs text-slate-400 font-normal">
-              Searching statutory provisions...
-            </span>
+          <div className="flex items-center gap-3 my-4">
+            <div className="w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center text-teal animate-pulse">
+              <Sparkles className="w-4 h-4" />
+            </div>
+            <div className="bg-white border border-border rounded-2xl px-5 py-3.5 shadow-sm text-xs text-charcoal-muted flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-teal animate-ping" />
+              <span>Retrieving verified statute sections from Chroma vector corpus ({jurisdiction})...</span>
+            </div>
           </div>
         )}
 
         <div ref={chatBottomRef} />
       </main>
 
-      {/* 3. Quiet floating bottom input */}
-      <footer className="sticky bottom-0 bg-page/90 backdrop-blur-sm border-t border-slate-200/80 py-3 z-20">
-        <div className="max-w-2xl w-full mx-auto px-4 space-y-2">
-          <div className="relative flex items-center bg-white border border-slate-200 rounded-xl shadow-xs focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 transition-all">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask a legal or regulatory question..."
-              className="w-full px-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-transparent focus:outline-none"
-              disabled={isLoading}
-            />
+      {/* 3. Bottom Controls: Suggestions + Persistent Disclaimer + Input */}
+      <footer className="pt-2 pb-4 flex-shrink-0 space-y-2">
+        {/* Suggested demo chips */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+          <span className="text-[11px] font-semibold text-gray-400 whitespace-nowrap">Suggested:</span>
+          {suggestedQueries.map((query, idx) => (
             <button
+              key={idx}
               type="button"
-              onClick={() => handleSendMessage()}
-              disabled={!inputValue.trim() || isLoading}
-              aria-label="Send message"
-              className="mr-2 p-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-30 disabled:cursor-not-allowed transition-opacity cursor-pointer flex-shrink-0"
+              onClick={() => handleSendMessage(query)}
+              className="px-3 py-1 rounded-lg bg-white hover:bg-gray-50 border border-gray-200 text-charcoal-muted hover:text-teal text-[11px] whitespace-nowrap shadow-xs transition-colors cursor-pointer flex items-center gap-1"
             >
-              <ArrowUp className="w-4 h-4" />
+              <span>{query}</span>
+              <ChevronRight className="w-3 h-3 text-gray-400" />
             </button>
-          </div>
+          ))}
+        </div>
 
-          <p className="text-[11px] text-slate-400 text-center font-normal">
-            Informational guidance only, not formal legal advice.
-          </p>
+        {/* Persistent Disclaimer Banner (FR5: pinned above chat input) */}
+        <DisclaimerBanner />
+
+        {/* Chat Input Bar */}
+        <div className="relative flex items-center bg-white border border-gray-300 rounded-2xl shadow-sm focus-within:ring-2 focus-within:ring-teal focus-within:border-transparent transition-all p-1.5">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={`Ask a legal or regulatory question in ${jurisdiction === "india" ? "India" : "International"} jurisdiction...`}
+            className="flex-1 px-4 py-2.5 text-sm text-charcoal placeholder-gray-400 bg-transparent focus:outline-none"
+            disabled={isLoading}
+          />
+
+          <button
+            type="button"
+            onClick={() => handleSendMessage()}
+            disabled={!inputValue.trim() || isLoading}
+            className="p-2.5 rounded-xl bg-teal hover:bg-teal-hover text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shadow-sm"
+            aria-label="Send Message"
+          >
+            <Send className="w-4 h-4" />
+          </button>
         </div>
       </footer>
 
-      {/* Unobtrusive Facilitator Contact Dialog */}
-      {showFacilitatorModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/20 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl border border-slate-200 shadow-md max-w-md w-full p-5 space-y-4 fade-in">
-            <div>
-              <h3 className="text-sm font-semibold text-slate-900">
-                Consult an Ayush IP Facilitator
-              </h3>
-              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                Connect with registered patent attorneys and National Biodiversity Authority compliance facilitators for binding legal counsel.
-              </p>
-            </div>
-
-            <div className="text-xs space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-100 text-slate-700">
-              <p><span className="font-medium">Facilitation Cell:</span> Ministry of AYUSH & CSIR-TKDL</p>
-              <p><span className="font-medium">Email:</span> ipr-cell@ayush.gov.in</p>
-              <p><span className="font-medium">Helpline:</span> 1800-11-2233 (Toll Free)</p>
-            </div>
-
-            <div className="flex justify-end gap-2 pt-2 text-xs">
-              <button
-                type="button"
-                onClick={() => setShowFacilitatorModal(false)}
-                className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 cursor-pointer"
-              >
-                Close
-              </button>
-              <a
-                href="mailto:ipr-cell@ayush.gov.in?subject=Ayurveda%20IP%20Facilitation%20Inquiry"
-                className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer"
-              >
-                Draft Email
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Formulation Classifier Modal */}
+      <FormulationClassifierModal
+        isOpen={isClassifierOpen}
+        onClose={() => setIsClassifierOpen(false)}
+        onClassificationComplete={(res) => setClassification(res.classification)}
+      />
     </div>
   );
 }
@@ -331,8 +366,11 @@ export default function ChatPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex h-screen items-center justify-center bg-page text-xs text-slate-400">
-          Loading conversation...
+        <div className="flex h-screen items-center justify-center bg-background text-xs text-charcoal-muted">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-teal animate-ping" />
+            <span>Loading IP-SAKTI Sahayak Chat Workspace...</span>
+          </div>
         </div>
       }
     >
@@ -340,3 +378,4 @@ export default function ChatPage() {
     </Suspense>
   );
 }
+

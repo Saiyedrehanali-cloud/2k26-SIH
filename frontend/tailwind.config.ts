@@ -9,28 +9,45 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        page: "#FAFBFC",
-        surface: "#FFFFFF",
-        primary: "#0F172A",
-        muted: "#64748B",
-        border: "#E2E8F0",
-        accent: {
-          DEFAULT: "#2563EB",
-          hover: "#1D4ED8",
-          light: "#EFF6FF",
+        background: "#F9FAFB",
+        card: "#FFFFFF",
+        charcoal: {
+          DEFAULT: "#1F2937",
+          light: "#374151",
+          muted: "#4B5563",
+          subtle: "#6B7280",
         },
-        status: {
-          success: "#16A34A",
-          caution: "#B45309",
+        teal: {
+          DEFAULT: "#0D9488",
+          hover: "#0F766E",
+          light: "#F0FDFA",
+          border: "#99F6E4",
+        },
+        orange: {
+          DEFAULT: "#F97316",
+          hover: "#EA580C",
+          light: "#FFF7ED",
+          border: "#FFEDD5",
+        },
+        confidence: {
+          high: "#16A34A",
+          medium: "#D97706",
+          low: "#F97316",
+        },
+        border: {
+          DEFAULT: "#E5E7EB",
+          light: "#F3F4F6",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
-      lineHeight: {
-        relaxed: "1.65",
-        loose: "1.8",
+      boxShadow: {
+        bento: "0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)",
+        bentoHover: "0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05)",
+        activeOrange: "0 0 0 3px rgba(249, 115, 22, 0.25)",
+        activeTeal: "0 0 0 3px rgba(13, 148, 136, 0.25)",
       },
     },
   },

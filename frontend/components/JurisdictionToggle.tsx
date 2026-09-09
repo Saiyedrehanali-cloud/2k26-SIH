@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Jurisdiction } from "../lib/types";
+import { Globe, ShieldCheck } from "lucide-react";
 
 interface JurisdictionToggleProps {
   currentJurisdiction: Jurisdiction;
@@ -14,69 +15,51 @@ export const JurisdictionToggle: React.FC<JurisdictionToggleProps> = ({
   onJurisdictionChange,
   className = "",
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const label = currentJurisdiction === "india" ? "India" : "International";
-
-  // Close when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const isIndia = currentJurisdiction === "india";
 
   return (
-    <div className={`relative inline-block text-left ${className}`} ref={dropdownRef}>
+    <div
+      className={`inline-flex items-center p-1.5 bg-gray-100/90 rounded-2xl border border-gray-200 shadow-inner ${className}`}
+      role="radiogroup"
+      aria-label="Active Legal Jurisdiction Corpus"
+    >
+      {/* India Button */}
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors focus:outline-none cursor-pointer py-1 px-2 rounded-md hover:bg-slate-100"
-        aria-haspopup="true"
-        aria-expanded={isOpen}
+        role="radio"
+        aria-checked={isIndia}
+        onClick={() => onJurisdictionChange("india")}
+        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 ${
+          isIndia
+            ? "bg-white text-orange shadow-md shadow-orange/10 border-2 border-orange font-bold scale-[1.02]"
+            : "text-gray-500 hover:text-gray-700 opacity-60 hover:opacity-90 border-2 border-transparent"
+        }`}
       >
-        <span>{label}</span>
-        <span className="text-xs text-slate-400 select-none">▾</span>
+        <ShieldCheck className={`w-4 h-4 ${isIndia ? "text-orange" : "text-gray-400"}`} />
+        <span>India (AYUSH / Patents Act)</span>
+        {isIndia && (
+          <span className="w-2 h-2 rounded-full bg-orange animate-pulse" />
+        )}
       </button>
 
-      {isOpen && (
-        <div className="absolute left-0 mt-1 w-44 rounded-lg bg-white border border-slate-200 shadow-sm py-1 z-50 text-xs">
-          <button
-            type="button"
-            onClick={() => {
-              onJurisdictionChange("india");
-              setIsOpen(false);
-            }}
-            className={`w-full text-left px-3 py-2 flex items-center justify-between transition-colors ${
-              currentJurisdiction === "india"
-                ? "text-blue-600 font-medium bg-slate-50"
-                : "text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <span>India</span>
-            {currentJurisdiction === "india" && <span className="text-blue-600 font-bold">✓</span>}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              onJurisdictionChange("international");
-              setIsOpen(false);
-            }}
-            className={`w-full text-left px-3 py-2 flex items-center justify-between transition-colors ${
-              currentJurisdiction === "international"
-                ? "text-blue-600 font-medium bg-slate-50"
-                : "text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <span>International</span>
-            {currentJurisdiction === "international" && <span className="text-blue-600 font-bold">✓</span>}
-          </button>
-        </div>
-      )}
+      {/* International Button */}
+      <button
+        type="button"
+        role="radio"
+        aria-checked={!isIndia}
+        onClick={() => onJurisdictionChange("international")}
+        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 ${
+          !isIndia
+            ? "bg-white text-orange shadow-md shadow-orange/10 border-2 border-orange font-bold scale-[1.02]"
+            : "text-gray-500 hover:text-gray-700 opacity-60 hover:opacity-90 border-2 border-transparent"
+        }`}
+      >
+        <Globe className={`w-4 h-4 ${!isIndia ? "text-orange" : "text-gray-400"}`} />
+        <span>International (TRIPS / Nagoya)</span>
+        {!isIndia && (
+          <span className="w-2 h-2 rounded-full bg-orange animate-pulse" />
+        )}
+      </button>
     </div>
   );
 };
