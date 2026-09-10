@@ -62,32 +62,31 @@ export default function ExplorerPage() {
 
   return (
     <div className="flex-1 flex flex-col justify-between max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      {/* Top Header */}
-      <header className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between pb-6 border-b border-[#E3ECE6] gap-4">
+      <header className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between pb-4 sm:pb-6 border-b border-[#E3ECE6] gap-3 sm:gap-4">
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-2xl bg-white p-1 border border-[#A8D5BA] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden">
+          <Link href="/" prefetch={false} className="flex items-center gap-2.5 sm:gap-3 group">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-white p-1 border border-[#A8D5BA] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden">
               <img src="/logo.png" alt="Vigyan Veda Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl sm:text-2xl font-black tracking-tight text-[#15261D]">Vigyan Veda</h1>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#EAF5EF] text-[#1B5E3A] border border-[#A8D5BA] whitespace-nowrap">
+                <h1 className="text-lg sm:text-2xl font-black tracking-tight text-[#15261D]">Vigyan Veda</h1>
+                <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-[#EAF5EF] text-[#1B5E3A] border border-[#A8D5BA] whitespace-nowrap">
                   TKDL Explorer
                 </span>
               </div>
-              <p className="text-xs text-[#475D51]">
+              <p className="text-[11px] sm:text-xs text-[#475D51]">
                 Statutory Botanical Prior Art, § 3(p) Patent Exclusions & NBA § 6 Compliance
               </p>
             </div>
           </Link>
         </div>
 
-        <div className="flex items-center gap-2.5 sm:gap-3 justify-end flex-wrap sm:flex-nowrap">
+        <div className="flex items-center gap-2 sm:gap-3 justify-end flex-wrap sm:flex-nowrap">
           <button
             type="button"
             onClick={() => handleOpenRegistration()}
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1B5E3A] hover:bg-[#14462B] text-white text-xs font-bold shadow-xs transition-all cursor-pointer text-center"
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[#1B5E3A] hover:bg-[#14462B] text-white text-xs font-bold shadow-xs transition-all cursor-pointer text-center"
           >
             <Lock className="w-3.5 h-3.5 text-[#6BBF8A]" />
             <span>Pre-Register Research</span>
@@ -95,7 +94,8 @@ export default function ExplorerPage() {
 
           <Link
             href="/chat"
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-[#EAF5EF] text-[#1B5E3A] text-xs font-bold border border-[#A8D5BA] shadow-xs transition-all text-center"
+            prefetch={false}
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white hover:bg-[#EAF5EF] text-[#1B5E3A] text-xs font-bold border border-[#A8D5BA] shadow-xs transition-all text-center"
           >
             <span>Legal Chat</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#2E7D5C]" />
@@ -378,10 +378,10 @@ export default function ExplorerPage() {
               </div>
             )}
 
-            {/* Modal Bottom CTAs */}
             <div className="pt-4 border-t border-[#E3ECE6] flex flex-wrap items-center justify-between gap-3">
               <Link
                 href={`/chat?classification=${encodeURIComponent("Proprietary Medicine")}`}
+                prefetch={false}
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-[#EAF5EF] text-[#1B5E3A] border border-[#A8D5BA] rounded-xl text-xs font-semibold shadow-xs transition-all cursor-pointer"
               >
                 <span>Ask AI Assistant about {selectedHerb.common_name}</span>
@@ -405,7 +405,6 @@ export default function ExplorerPage() {
         </div>
       )}
 
-      {/* Research Pre-Registration Modal */}
       <ResearchRegistrationModal
         isOpen={isRegisterModalOpen}
         onClose={() => {
@@ -413,12 +412,10 @@ export default function ExplorerPage() {
           setPrefilledHerb("");
         }}
         onSuccess={() => {
-          // Refresh catalog metrics
           fetchHerbs(searchQuery, activeFilter);
         }}
       />
 
-      {/* Footer */}
       <footer className="mt-8 pt-6 border-t border-[#E3ECE6] flex flex-col sm:flex-row items-center justify-between text-xs text-[#71867A] gap-4">
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
           <span className="font-semibold text-[#1B5E3A]">Vigyan Veda</span>
@@ -428,8 +425,8 @@ export default function ExplorerPage() {
           <span>Traditional Knowledge Digital Library (TKDL) Explorer</span>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/" className="hover:text-[#1B5E3A] font-semibold">Home</Link>
-          <Link href="/chat" className="hover:text-[#1B5E3A] font-semibold">Chat Assistant</Link>
+          <Link href="/" prefetch={false} className="hover:text-[#1B5E3A] font-semibold">Home</Link>
+          <Link href="/chat" prefetch={false} className="hover:text-[#1B5E3A] font-semibold">Chat Assistant</Link>
           <button
             type="button"
             onClick={() => handleOpenRegistration()}
