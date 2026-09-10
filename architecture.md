@@ -1,74 +1,79 @@
-# System Architecture & Tech Stack: IP-SAKTI Sahayak
+# System Architecture & Tech Stack: Vigyan Veda (IP-SAKTI Sahayak)
 
 ## 1. Stack Summary
 
 | Layer | Choice | Why |
 |---|---|---|
-| Frontend | Next.js (App Router) + TypeScript | fast scaffolding, good agent support |
-| Styling | Tailwind CSS | matches Bento Box design system quickly |
-| State | React Context (chat + jurisdiction state) | app is small enough to not need Zustand/Redux |
-| Backend | Python + FastAPI | fast to scaffold, async, good LangChain support |
-| RAG orchestration | LangChain (or LlamaIndex) | retrieval + citation extraction |
-| Vector DB | Chroma (local, file-based) for the hackathon; Pinecone/Weaviate noted as production upgrade | Chroma needs no external account/API key — safer for a live demo with venue wifi |
-| LLM | Claude or GPT-4o via API, with a local fallback of cached responses | reasoning quality + instruction-following on citation format |
-| Embeddings | OpenAI `text-embedding-3-small` or equivalent | cheap, fast for a small corpus |
-
-> **Demo-day note:** prefer Chroma (local, no network dependency) over a hosted vector DB. Venue wifi is the #1 cause of hackathon demo failures. Swap to Pinecone/Weaviate only after the live demo is derisked.
+| Frontend | Next.js (App Router) + TypeScript | Fast static compilation (`output: export`), offline stability, Netlify hostable |
+| Styling | Tailwind CSS | Custom 5-color botanical green palette + responsive Bento Box UI |
+| State | React hooks + session persistence | Zero bloat, instant cross-page state retention |
+| Backend | Python + FastAPI | Fast async endpoints, Pydantic data schemas |
+| Vector DB | Chroma (local, file-based) | Zero cloud latency or venue Wi-Fi failure risk |
+| Registry DB | SQLite3 (`research_registry.db`) | Instant local pre-registration & fuzzy prior art conflict checking |
+| Botanical Database | Classical Ayurvedic JSON (`tkdl_herbs.json`) | Section 3(p) analysis, classical text citations, NBA § 6 ABS rules |
+| LLM | Claude / GPT-4o with deterministic statutory fallback | Rigorous legal reasoning and strict citation enforcement |
 
 ## 2. High-Level Data Flow
 
 ```
 User → [Jurisdiction Toggle: India | International]
-     → [Formulation Classifier] (optional, sets context)
+     → [Formulation Classifier] (determines ASU classification)
      → Chat message
          → FastAPI /chat endpoint
-             → Retrieve top-k chunks from Chroma, filtered by jurisdiction metadata
-             → Build prompt: system instructions + retrieved context + user question
-             → Call LLM
-             → Parse response into {answer, citations[], confidence}
-             → If citations[] is empty → return "low confidence" fallback, do not show as final answer
-         → Frontend renders: answer bubble + citations drawer + confidence badge
+             → Check Innovation Registry for overlapping prior art claims (fuzzy/botanical)
+             → Retrieve top-k statutory chunks from Chroma (filtered by jurisdiction)
+             → Build prompt: system instructions + context + conflict alerts + question
+             → Call LLM / Deterministic Statutory Synthesizer
+             → Parse response into {answer, citations[], confidence, conflict_alert}
+         → Frontend renders:
+             → Conflict Alert Card (if overlapping prior art exists)
+             → Answer prose
+             → Citations Drawer (with clickable statutory refs)
+             → Confidence badge (High / Medium / Low)
 ```
 
 ## 3. Repository Structure
 
 ```
-ip-sakti-sahayak/
+vigyan-veda/
 ├── frontend/
 │   ├── app/
-│   │   ├── page.tsx                 # landing + jurisdiction toggle entry
-│   │   ├── chat/page.tsx            # main chat interface
-│   │   └── layout.tsx
+│   │   ├── page.tsx                 # Vigyan Veda landing & feature showcase
+│   │   ├── chat/page.tsx            # Main chat interface with conflict alerts
+│   │   ├── explorer/page.tsx        # Botanical Prior Art & TKDL Explorer
+│   │   └── layout.tsx               # Root layout, Vigyan Veda metadata & logo icon
 │   ├── components/
-│   │   ├── JurisdictionToggle.tsx
+│   │   ├── JurisdictionToggle.tsx   # India / International toggle
 │   │   ├── FormulationClassifierModal.tsx
-│   │   ├── ChatBubble.tsx
+│   │   ├── ResearchRegistrationModal.tsx # Pre-filing research ledger modal
+│   │   ├── ChatBubble.tsx           # Multi-card bubble with conflict warnings
 │   │   ├── CitationDrawer.tsx
 │   │   ├── ConfidenceBadge.tsx
 │   │   └── DisclaimerBanner.tsx
-│   ├── lib/api.ts                   # fetch wrappers to backend
-│   ├── tailwind.config.ts
+│   ├── public/
+│   │   └── logo.png                 # Official Vigyan Veda botanical circuit logo
+│   ├── lib/
+│   │   ├── api.ts                   # REST API wrappers
+│   │   └── types.ts                 # TypeScript interfaces
 │   └── package.json
 ├── backend/
 │   ├── main.py                      # FastAPI app entrypoint
+│   ├── registry_db.py               # SQLite Innovation Registry manager
 │   ├── routers/
-│   │   ├── chat.py                  # POST /chat
-│   │   └── classify.py              # POST /classify
-│   ├── rag/
-│   │   ├── ingest.py                # chunk + embed + store documents
-│   │   ├── retrieve.py              # jurisdiction-filtered similarity search
-│   │   └── prompts.py               # system prompts, citation-format enforcement
+│   │   ├── chat.py                  # POST /chat (RAG + Conflict Checker)
+│   │   ├── classify.py              # POST /classify (Rule decision tree)
+│   │   ├── registry.py              # POST /registry/add, GET /registry/list
+│   │   └── explorer.py              # GET /explorer/all, GET /explorer/search
 │   ├── data/
-│   │   ├── raw/                     # seeded PDFs / legal texts
-│   │   └── chroma_db/               # local vector store (generated)
+│   │   ├── tkdl_herbs.json          # Classical Ayurveda & TKDL dataset
+│   │   ├── research_registry.db     # SQLite persistence for pending prior art
+│   │   └── raw/                     # Seeded statutory texts
 │   ├── models.py                    # Pydantic schemas
 │   └── requirements.txt
-├── docs/
-│   ├── prd.md
-│   ├── architecture.md
-│   ├── ui_ux_guidelines.md
-│   └── project_flow.md
-└── README.md
+├── prd.md
+├── architecture.md
+├── netlify.toml
+└── package.json
 ```
 
 ## 4. API Contracts

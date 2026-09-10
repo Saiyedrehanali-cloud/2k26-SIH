@@ -1,0 +1,361 @@
+[
+  {
+    "id": "ashwagandha",
+    "common_name": "Ashwagandha / Indian Ginseng",
+    "sanskrit_name": "Ashvagandha (अश्वगन्धा)",
+    "scientific_name": "Withania somnifera (L.) Dunal",
+    "family": "Solanaceae",
+    "parts_used": ["Root", "Leaves"],
+    "classical_texts": [
+      "Charaka Samhita, Sutrasthana 4/13 (Balya Mahakashaya)",
+      "Sushruta Samhita, Sutrasthana 38/66",
+      "Bhavaprakasha Nighantu, Guduchyadi Varga"
+    ],
+    "traditional_uses": [
+      "Rasayana (rejuvenator and adaptogen)",
+      "Balya (strength promoting)",
+      "Nidrajnana (sleep-inducing and stress reducing)",
+      "Vata-Kaphahara (balancing nervous and respiratory functions)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V3-1492",
+    "tkdl_citations": [
+      "Charaka Samhita, Chikitsasthana 1.1: Rasayana Adhyaya",
+      "Ayurvedic Formulary of India (AFI), Part I, Formulation 1:1"
+    ],
+    "patentability_status": {
+      "rating": "HIGH_SCRUTINY_3P",
+      "section_3p": "Non-patentable as raw powder, aqueous extract, or traditional decoction under Section 3(p) of the Patents Act, 1970 (Traditional Knowledge).",
+      "section_3e": "Combinations with known additives strictly rejected under Section 3(e) as mere admixing unless synergistic efficacy exceeding additive effects is clinically proven.",
+      "viable_ip_pathways": [
+        "Novel non-obvious delivery system (e.g., targeted nanoparticle lipid carrier) demonstrating unexpected pharmacokinetic stability.",
+        "Specific isolated fraction with synthetic structural modifications demonstrating uncharacterized therapeutic receptor affinity."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Under Section 6 of the Biological Diversity Act, 2002, foreign individuals/corporations or Indian entities with foreign equity must obtain prior approval from the National Biodiversity Authority (NBA) via Form III before applying for an Indian patent.",
+      "indian_entity_rule": "Indian citizens/entities must file Form I notification with the State Biodiversity Board (SBB) if commercial utilization is pursued.",
+      "punitive_statute": "Non-compliance triggers rejection under Section 10(4)(d)(ii) of Patents Act and penal provisions under Section 55 of BDA 2002."
+    },
+    "key_bioactives": [
+      "Withanolides (Withaferin A, Withanolide A, Withanolide D)",
+      "Sominone",
+      "Anaferine"
+    ],
+    "active_research_count": 3
+  },
+  {
+    "id": "turmeric",
+    "common_name": "Turmeric / Haldi",
+    "sanskrit_name": "Haridra (हरिद्रा)",
+    "scientific_name": "Curcuma longa L.",
+    "family": "Zingiberaceae",
+    "parts_used": ["Rhizome"],
+    "classical_texts": [
+      "Charaka Samhita, Sutrasthana 4/16 (Kushthaghna)",
+      "Sushruta Samhita, Sutrasthana 38/27",
+      "Ashtanga Hridaya, Uttarasthana 39"
+    ],
+    "traditional_uses": [
+      "Vranaropana (wound healing and tissue repair)",
+      "Kushthaghna (skin diseases and anti-inflammatory)",
+      "Vishaghna (detoxification and antioxidant)",
+      "Pramehaghna (anti-diabetic activity)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V1-0814",
+    "tkdl_citations": [
+      "Bhavaprakasha Nighantu, Haritakyadi Varga, Sloka 197",
+      "US Patent 5,401,504 Revocation Case (CSIR Landmark Revocation, 1997)"
+    ],
+    "patentability_status": {
+      "rating": "STRICT_EXCLUSION_PRIOR_ART",
+      "section_3p": "Landmark subject of the 1997 CSIR revocation of US Patent 5,401,504. Topical wound healing, anti-inflammatory use, and culinary antimicrobial properties are 100% barred under Section 3(p).",
+      "section_3e": "Curcumin + piperine formulations face intense scrutiny under Section 3(e) as bio-enhancement is documented in classical Trikatu formulations.",
+      "viable_ip_pathways": [
+        "Synthetic chemical derivatives of curcumin with novel core heterocycles.",
+        "Precision micellar microencapsulation solving systemic oral bioavailability barriers with non-obvious stability curves."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Section 6 BDA clearance mandatory for patent filing using Curcuma longa sourced from Indian biological habitats.",
+      "indian_entity_rule": "Exempt from NBA Section 3 only if listed as a Normally Traded Commodity (NTC) under MoEFCC notification, BUT patenting applications trigger Section 6 approval regardless of NTC status.",
+      "punitive_statute": "Section 55 BDA 2002 — Imprisonment up to 5 years or fine up to 10 lakh INR."
+    },
+    "key_bioactives": [
+      "Curcuminoids (Curcumin, Demethoxycurcumin, Bisdemethoxycurcumin)",
+      "Turmerones (ar-turmerone, alpha-turmerone)",
+      "Zingiberene"
+    ],
+    "active_research_count": 5
+  },
+  {
+    "id": "neem",
+    "common_name": "Neem / Indian Lilac",
+    "sanskrit_name": "Nimba (निम्ब)",
+    "scientific_name": "Azadirachta indica A. Juss.",
+    "family": "Meliaceae",
+    "parts_used": ["Bark", "Leaves", "Seeds", "Oil"],
+    "classical_texts": [
+      "Charaka Samhita, Chikitsasthana 7 (Kushtha Chikitsa)",
+      "Sushruta Samhita, Sutrasthana 45",
+      "European Patent Office Revocation EP 0436257 B1 (Neem Fungicidal Patent Revocation, 2000)"
+    ],
+    "traditional_uses": [
+      "Krimighna (anthelmintic, antiparasitic, antifungal)",
+      "Kandughna (anti-pruritic, relieving skin irritation)",
+      "Raktashodhaka (blood purifier)",
+      "Vranashodhana (wound cleansing)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V2-0433",
+    "tkdl_citations": [
+      "Charaka Samhita, Sutrasthana 27",
+      "Dhanvantari Nighantu, Chandanadi Varga"
+    ],
+    "patentability_status": {
+      "rating": "GLOBAL_TK_LANDMARK",
+      "section_3p": "Subject of the historic 10-year battle at the European Patent Office (EPO Patent No. 0436257 revoked in 2000 for lack of novelty based on Indian traditional usage). Absolutely unpatentable for fungicidal, pesticide, or antibacterial uses under Section 3(p).",
+      "section_3e": "Synergistic combinations must demonstrate therapeutic efficacy overcoming centuries of documented Ayurvedic polyherbal formulas.",
+      "viable_ip_pathways": [
+        "Novel chemically engineered azadirachtin analogs with extended photostability and zero mammalian toxicity."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Mandatory Form III clearance prior to Indian patent sealing. Form I notification to State Biodiversity Board for commercial cultivation.",
+      "indian_entity_rule": "Requires benefit sharing agreement with local panchayats / Biodiversity Management Committees (BMCs) under Nagoya Protocol.",
+      "punitive_statute": "Section 10(4)(d) Patent Act disclosure mandatory."
+    },
+    "key_bioactives": [
+      "Azadirachtin A & B",
+      "Nimbin",
+      "Nimbidin",
+      "Salannin"
+    ],
+    "active_research_count": 2
+  },
+  {
+    "id": "tulsi",
+    "common_name": "Holy Basil / Tulsi",
+    "sanskrit_name": "Tulasi (तुलसी)",
+    "scientific_name": "Ocimum sanctum L. (syn. Ocimum tenuiflorum)",
+    "family": "Lamiaceae",
+    "parts_used": ["Leaves", "Seeds", "Whole plant"],
+    "classical_texts": [
+      "Charaka Samhita, Chikitsasthana 18 (Kasa Chikitsa)",
+      "Sushruta Samhita, Sutrasthana 38",
+      "Bhavaprakasha Nighantu, Pushpa Varga"
+    ],
+    "traditional_uses": [
+      "Kasahara / Shwasahara (respiratory disorders, cough, asthma)",
+      "Hridya (cardioprotective and adaptogenic)",
+      "Vishahara (antidote and immune modulator)",
+      "Deepana-Pachana (digestive stimulant)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V3-2109",
+    "tkdl_citations": [
+      "Ayurvedic Pharmacopoeia of India (API), Part I, Vol II, Page 168",
+      "Sahasrayogam, Kashaya Prakarana"
+    ],
+    "patentability_status": {
+      "rating": "HIGH_SCRUTINY_3P",
+      "section_3p": "Respiratory relief, antiviral infusions, and general immune booster claims barred under § 3(p).",
+      "section_3e": "Admixtures with honey, ginger, or black pepper (Trikatu) barred under § 3(e) as traditional Sitopaladi/Kasahara combinations.",
+      "viable_ip_pathways": [
+        "Modified ursolic acid compounds targeting metabolic syndrome with non-obvious AMPK activation mechanisms.",
+        "Novel targeted aerosol delivery formulations with stabilized volatile terpene fractions."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Requires NBA Section 6 approval before grant of patent if wild-collected biological material from Indian territory is utilized.",
+      "indian_entity_rule": "Fair and equitable benefit sharing to state biodiversity funds under BDA 2002 Regulations.",
+      "punitive_statute": "Invalidation of patent under Section 64(1)(p) if complete specification conceals source and geographical origin."
+    },
+    "key_bioactives": [
+      "Eugenol",
+      "Ursolic acid",
+      "Rosmarinic acid",
+      "Caryophyllene"
+    ],
+    "active_research_count": 4
+  },
+  {
+    "id": "brahmi",
+    "common_name": "Brahmi / Water Hyssop",
+    "sanskrit_name": "Brahmi (ब्राह्मी)",
+    "scientific_name": "Bacopa monnieri (L.) Wettst.",
+    "family": "Plantaginaceae",
+    "parts_used": ["Whole plant", "Leaves"],
+    "classical_texts": [
+      "Charaka Samhita, Chikitsasthana 1.3 (Medhya Rasayana)",
+      "Sushruta Samhita, Chikitsasthana 28",
+      "Ashtanga Hridaya, Uttarasthana 1"
+    ],
+    "traditional_uses": [
+      "Medhya Rasayana (nootropic, cognitive enhancer, intellect promoter)",
+      "Ayushya (longevity enhancer)",
+      "Unmada-Apasmara hara (alleviating psychosis, epilepsy, memory loss)",
+      "Shothahara (neuroprotective anti-inflammatory)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V1-1102",
+    "tkdl_citations": [
+      "Charaka Samhita, Chikitsasthana 1.3: Medhya Rasayana Adhyaya",
+      "Bhavaprakasha Nighantu, Guduchyadi Varga, Sloka 280"
+    ],
+    "patentability_status": {
+      "rating": "HIGH_SCRUTINY_3P",
+      "section_3p": "Direct claims for memory enhancement, Alzheimer's prevention, or cognitive booster extract are barred under Section 3(p).",
+      "section_3e": "Combinations with Shankhpushpi, Mandukaparni, or Jyotishmati rejected under Section 3(e) as classical Medhya polyherbal formulations.",
+      "viable_ip_pathways": [
+        "Enriched Bacoside-A/B fraction with novel synthetic lipid conjugation ensuring targeted blood-brain barrier (BBB) permeability."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Commercial sourcing of wild wetland Bacopa monnieri triggers State Biodiversity Board (SBB) regulation and access benefit sharing agreements.",
+      "indian_entity_rule": "Prior approval from NBA required for foreign technology transfer or patent filing.",
+      "punitive_statute": "Section 10(4)(d) requirement for exact geo-coordinates of collection."
+    },
+    "key_bioactives": [
+      "Bacosides A3, Bacopaside I, Bacopaside II",
+      "Bacosaponins",
+      "Betulinic acid"
+    ],
+    "active_research_count": 2
+  },
+  {
+    "id": "guggulu",
+    "common_name": "Guggulu / Indian Bdellium",
+    "sanskrit_name": "Guggulu (गुग्गुलु)",
+    "scientific_name": "Commiphora mukul (Stocks) Hook.",
+    "family": "Burseraceae",
+    "parts_used": ["Oleo-gum-resin"],
+    "classical_texts": [
+      "Sushruta Samhita, Sutrasthana 15 (Medoroga Chikitsa)",
+      "Charaka Samhita, Chikitsasthana 28 (Vatavyadhi)",
+      "Chakradatta, Amavata Prakarana"
+    ],
+    "traditional_uses": [
+      "Medoroga (hypolipidemic, anti-obesity)",
+      "Amavata / Sandhivata (rheumatoid arthritis, osteoarthritis)",
+      "Bhagnasandhana (bone fracture healing)",
+      "Lekhana (clearing atherosclerotic plaques)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V2-1920",
+    "tkdl_citations": [
+      "Ayurvedic Formulary of India (Yograj Guggulu, Kaishore Guggulu)",
+      "Sushruta Samhita, Sutrasthana 15.32"
+    ],
+    "patentability_status": {
+      "rating": "HIGH_SCRUTINY_3P",
+      "section_3p": "Hypolipidemic, anti-cholesterol, and anti-arthritic claims are classical and strictly excluded under § 3(p).",
+      "section_3e": "Shodhita Guggulu (purified in Triphala decoction) is an ancient pharmaceutical process, strictly not an invention under § 3(d) / § 3(e).",
+      "viable_ip_pathways": [
+        "Synthetic derivatives of Z-Guggulsterone and E-Guggulsterone with optimized FXR antagonism."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "CRITICAL_ENDANGERED",
+      "details": "Commiphora wightii is on the IUCN Red List and CITES Appendix II. Extraction and commercial patenting require strict Biodiversity clearance.",
+      "indian_entity_rule": "SBB clearance and sustainable harvest audit mandatory.",
+      "punitive_statute": "Severe penal action under Wildlife Protection Act & Biological Diversity Act 2002."
+    },
+    "key_bioactives": [
+      "E-Guggulsterone & Z-Guggulsterone",
+      "Mukulol",
+      "Commipheric acid"
+    ],
+    "active_research_count": 1
+  },
+  {
+    "id": "amla",
+    "common_name": "Amla / Indian Gooseberry",
+    "sanskrit_name": "Amalaki (आमलकी)",
+    "scientific_name": "Phyllanthus emblica L.",
+    "family": "Phyllanthaceae",
+    "parts_used": ["Fruit"],
+    "classical_texts": [
+      "Charaka Samhita, Chikitsasthana 1.1 (Rasayana)",
+      "Sushruta Samhita, Sutrasthana 46",
+      "Bhavaprakasha Nighantu, Haritakyadi Varga"
+    ],
+    "traditional_uses": [
+      "Chakshushya (vision enhancer)",
+      "Vayasthapana (anti-aging and antioxidant)",
+      "Pramehaghna (metabolic regulation)",
+      "Dhatuvardhana (cellular nutrient promoter)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V1-0341",
+    "tkdl_citations": [
+      "Charaka Samhita, Chikitsasthana 1.1.30 (Chyawanprash Awaleha)",
+      "Ashtanga Hridaya, Uttarasthana 39"
+    ],
+    "patentability_status": {
+      "rating": "HIGH_SCRUTINY_3P",
+      "section_3p": "Vitamin C source, antioxidant, or immunity confectionery are standard classical uses barred under § 3(p).",
+      "section_3e": "Triphala component: claims on combinations with Haritaki and Bibhitaki rejected under § 3(e).",
+      "viable_ip_pathways": [
+        "Novel enzyme-stabilized polyphenolic complex preventing tannin precipitation during industrial sterile aqueous storage."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Section 6 BDA clearance mandatory for patent claims involving Indian wild varieties.",
+      "indian_entity_rule": "Exempt under NTC for commercial domestic trade, but non-exempt when intellectual property rights are claimed.",
+      "punitive_statute": "Revocation under Section 64(1)(p) of Patents Act."
+    },
+    "key_bioactives": [
+      "Emblicanin A and B",
+      "Punigluconin",
+      "Pedunculagin",
+      "Ascorbic acid bound complexes"
+    ],
+    "active_research_count": 3
+  },
+  {
+    "id": "giloy",
+    "common_name": "Giloy / Heart-Leaved Moonseed",
+    "sanskrit_name": "Guduchi (गुडूची / अमृता)",
+    "scientific_name": "Tinospora cordifolia (Willd.) Miers",
+    "family": "Menispermaceae",
+    "parts_used": ["Stem"],
+    "classical_texts": [
+      "Charaka Samhita, Sutrasthana 4/13 (Vayasthapana)",
+      "Sushruta Samhita, Sutrasthana 38/1",
+      "Bhavaprakasha Nighantu, Guduchyadi Varga, Sloka 1"
+    ],
+    "traditional_uses": [
+      "Jvaraghna (anti-pyretic and fever reducer)",
+      "Rasayana (immunomodulator and hepatoprotective)",
+      "Deepana-Pachana (digestive stimulant and metabolic regulator)",
+      "Krimighna (antimicrobial)"
+    ],
+    "tkdl_ref_id": "TKDL-AY-V2-0672",
+    "tkdl_citations": [
+      "Charaka Samhita, Chikitsasthana 3 (Jvara Chikitsa)",
+      "Samsamani Vati, AFI Part I"
+    ],
+    "patentability_status": {
+      "rating": "HIGH_SCRUTINY_3P",
+      "section_3p": "Immune boosting, platelet enhancement, or dengue adjuvant claims barred under § 3(p) as traditional Guduchi Satva.",
+      "section_3e": "Extract plus zinc or vitamin C combinations rejected under Section 3(e).",
+      "viable_ip_pathways": [
+        "Novel structural polysaccharide fractions (e.g., alpha-D-glucan) with standardized molecular weight profiles and non-obvious macrophage activation kinetics."
+      ]
+    },
+    "abs_requirements": {
+      "nba_clearance": "MANDATORY_FOREIGN",
+      "details": "Prior approval from NBA mandatory for foreign entities.",
+      "indian_entity_rule": "Benefit sharing with local forest communities under BDA 2002 guidelines.",
+      "punitive_statute": "Section 10(4)(d)(ii) of Patents Act 1970."
+    },
+    "key_bioactives": [
+      "Tinosporaside",
+      "Cordifolioside A & B",
+      "Berberine",
+      "Tinocordiside"
+    ],
+    "active_research_count": 2
+  }
+]

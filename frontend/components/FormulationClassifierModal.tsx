@@ -110,8 +110,8 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
   const selectedAnswer = answers[currentQ?.id];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
-      <div className="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-gray-200 relative animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/40 backdrop-blur-xs">
+      <div className="bg-white rounded-2xl sm:rounded-3xl max-w-xl w-full p-5 sm:p-7 shadow-2xl border border-gray-200 relative animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -122,25 +122,25 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
 
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-orange-light text-orange flex items-center justify-center font-bold">
-            <Sparkles className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-[#EAF5EF] text-[#1B5E3A] flex items-center justify-center font-bold">
+            <Sparkles className="w-5 h-5 text-[#4B9B6E]" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-charcoal">Ayurvedic Formulation Classifier</h3>
-            <p className="text-xs text-gray-500">Statutory categorization under Drugs & Cosmetics Act & Patents Act</p>
+            <h3 className="text-base font-bold text-[#15261D]">Ayurvedic Formulation Classifier</h3>
+            <p className="text-xs text-[#475D51]">Statutory categorization under Drugs & Cosmetics Act & Patents Act</p>
           </div>
         </div>
 
         {/* Progress Bar */}
         {!result && (
           <div className="mb-6">
-            <div className="flex justify-between text-xs text-gray-400 font-medium mb-1.5">
+            <div className="flex justify-between text-xs text-[#71867A] font-medium mb-1.5">
               <span>Question {currentStep + 1} of {QUESTIONS.length}</span>
-              <span>{Math.round(((currentStep + 1) / QUESTIONS.length) * 100)}%</span>
+              <span className="font-bold text-[#1B5E3A]">{Math.round(((currentStep + 1) / QUESTIONS.length) * 100)}%</span>
             </div>
-            <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-[#E3ECE6] rounded-full overflow-hidden">
               <div
-                className="h-full bg-orange transition-all duration-300 rounded-full"
+                className="h-full bg-gradient-to-r from-[#4B9B6E] to-[#2E7D5C] transition-all duration-300 rounded-full"
                 style={{ width: `${((currentStep + 1) / QUESTIONS.length) * 100}%` }}
               />
             </div>
@@ -151,8 +151,8 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
         {!result ? (
           <div className="space-y-4">
             <div>
-              <h4 className="text-sm font-bold text-charcoal leading-snug">{currentQ.title}</h4>
-              <p className="text-xs text-gray-500 mt-1">{currentQ.description}</p>
+              <h4 className="text-sm font-bold text-[#15261D] leading-snug">{currentQ.title}</h4>
+              <p className="text-xs text-[#475D51] mt-1">{currentQ.description}</p>
             </div>
 
             <div className="space-y-2.5 pt-2">
@@ -165,35 +165,35 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
                     onClick={() => handleSelectOption(currentQ.id, opt.value)}
                     className={`w-full text-left p-3.5 rounded-xl border transition-all cursor-pointer ${
                       isSelected
-                        ? "border-2 border-orange bg-orange-light/50 shadow-sm"
-                        : "border-gray-200 hover:border-gray-300 bg-white"
+                        ? "border-2 border-[#1B5E3A] bg-[#EAF5EF] shadow-xs"
+                        : "border-[#E3ECE6] hover:border-[#A8D5BA] bg-white hover:bg-[#F7FAF8]"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className={`text-xs font-semibold ${isSelected ? "text-orange-hover" : "text-charcoal"}`}>
+                      <span className={`text-xs font-semibold ${isSelected ? "text-[#1B5E3A] font-bold" : "text-[#15261D]"}`}>
                         {opt.label}
                       </span>
                       <div
                         className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                          isSelected ? "border-orange bg-orange text-white" : "border-gray-300"
+                          isSelected ? "border-[#1B5E3A] bg-[#1B5E3A] text-white" : "border-gray-300"
                         }`}
                       >
                         {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                       </div>
                     </div>
-                    {opt.hint && <p className="text-[11px] text-gray-400 mt-1">{opt.hint}</p>}
+                    {opt.hint && <p className="text-[11px] text-[#71867A] mt-1">{opt.hint}</p>}
                   </button>
                 );
               })}
             </div>
 
             {/* Navigation buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+            <div className="flex items-center justify-between pt-4 border-t border-[#E3ECE6]">
               <button
                 type="button"
                 disabled={currentStep === 0}
                 onClick={() => setCurrentStep((prev) => prev - 1)}
-                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-gray-500 hover:text-gray-800 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-[#475D51] hover:text-[#15261D] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back</span>
@@ -203,7 +203,7 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
                 type="button"
                 disabled={!selectedAnswer || isEvaluating}
                 onClick={handleNext}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange hover:bg-orange-hover text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1B5E3A] hover:bg-[#14462B] text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isEvaluating ? (
                   <>
@@ -222,23 +222,23 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
         ) : (
           /* Result View */
           <div className="space-y-4 animate-in fade-in duration-200">
-            <div className="p-5 bg-teal-light rounded-2xl border border-teal-border text-center space-y-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-teal">
+            <div className="p-5 bg-[#EAF5EF] rounded-2xl border border-[#A8D5BA] text-center space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#1B5E3A]">
                 Statutory Determination
               </span>
-              <div className="inline-block px-4 py-1.5 bg-white text-teal rounded-full font-bold text-base shadow-sm border border-teal/20">
+              <div className="inline-block px-4 py-1.5 bg-white text-[#1B5E3A] rounded-full font-bold text-base shadow-sm border border-[#A8D5BA]">
                 {result.classification}
               </div>
-              <p className="text-xs text-charcoal-muted leading-relaxed pt-2 text-left">
+              <p className="text-xs text-[#475D51] leading-relaxed pt-2 text-left">
                 {result.explanation}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+            <div className="flex items-center justify-between pt-3 border-t border-[#E3ECE6]">
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-800 cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs text-[#475D51] hover:text-[#15261D] cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Change Answers</span>
@@ -247,7 +247,7 @@ export const FormulationClassifierModal: React.FC<FormulationClassifierModalProp
               <button
                 type="button"
                 onClick={handleApplyResult}
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-teal hover:bg-teal-hover text-white text-xs font-semibold shadow-sm transition-all cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#2E7D5C] hover:bg-[#1B5E3A] text-white text-xs font-semibold shadow-sm transition-all cursor-pointer"
               >
                 <span>Continue to Chat with Context</span>
                 <ArrowRight className="w-4 h-4" />

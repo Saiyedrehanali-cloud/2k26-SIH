@@ -1,11 +1,11 @@
 {
-  "name": "ip-sakti-sahayak",
+  "name": "vigyan-veda",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
     "frontend"
   ],
-  "description": "IP-SAKTI Sahayak — Legal AI Assistant for Ministry of Ayush",
+  "description": "Vigyan Veda — AI-Powered Ayush IP & Innovation Assistant",
   "scripts": {
     "dev": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build && node -e \"const fs=require('fs'); fs.cpSync('frontend/.next', '.next', {recursive: true});\"",

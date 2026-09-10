@@ -1,4 +1,14 @@
-import { ChatMessage, Citation, Jurisdiction, ClassificationResult } from "./types";
+import {
+  ChatMessage,
+  Citation,
+  Jurisdiction,
+  ClassificationResult,
+  ConflictAlert,
+  ResearchRegistrationRequest,
+  ResearchRegistration,
+  HerbDetail
+} from "./types";
+import OFFLINE_HERBS_DATA from "./tkdl_herbs.json";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
@@ -77,6 +87,7 @@ export async function sendChatMessage(
   jurisdiction: Jurisdiction;
   disclaimer: string;
   isRefusal?: boolean;
+  conflictAlert?: ConflictAlert | null;
 }> {
   try {
     const res = await fetch(`${BACKEND_URL}/chat`, {
@@ -99,6 +110,7 @@ export async function sendChatMessage(
         jurisdiction: data.jurisdiction || jurisdiction,
         disclaimer: data.disclaimer || "This tool provides informational guidance, not formal legal advice.",
         isRefusal: (!data.citations || data.citations.length === 0) || data.confidence === "low",
+        conflictAlert: data.conflict_alert || null,
       };
     }
   } catch (err) {
@@ -224,4 +236,101 @@ export async function classifyFormulation(answers: Record<string, any>): Promise
     explanation: "Patent or Proprietary Ayurvedic Medicine under Section 3(h). Requires safety & efficacy data under Rule 158B; patentable only if non-obvious synergistic efficacy is proven. Mandatory NBA Section 6 approval required.",
   };
 }
+
+export async function registerResearch(data: ResearchRegistrationRequest): Promise<ResearchRegistration> {
+  try {
+    const res = await fetch(`${BACKEND_URL}/registry/add`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn("Backend registry endpoint unavailable, using offline fallback:", err);
+  }
+
+  // Offline fallback
+  const mockId = `AYUSH-REG-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+  return {
+    reg_id: mockId,
+    title: data.title,
+    herb_name: data.herb_name,
+    applicant_name: data.applicant_name,
+    applicant_type: data.applicant_type,
+    stage: data.stage,
+    claims_summary: data.claims_summary,
+    timestamp: new Date().toISOString(),
+    status: "ACTIVE_PENDING",
+    security_hash: "SHA256:" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+  };
+}
+
+export async function getRegistrations(): Promise<ResearchRegistration[]> {
+  try {
+    const res = await fetch(`${BACKEND_URL}/registry/list`);
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn("Backend registry list unavailable, using offline mock data:", err);
+  }
+
+  return [];
+}
+
+export async function searchHerbs(query: string = "", filterType: string = "all"): Promise<{ count: number; results: HerbDetail[] }> {
+  try {
+    const params = new URLSearchParams();
+    if (query) params.append("q", query);
+    if (filterType && filterType !== "all") params.append("filter_type", filterType);
+
+    const res = await fetch(`${BACKEND_URL}/explorer/search?${params.toString()}`);
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn("Backend explorer search unavailable, using offline dataset:", err);
+  }
+
+  // Client-side fallback using bundled botanical dataset
+  let dataset = (OFFLINE_HERBS_DATA as unknown) as HerbDetail[];
+
+  if (query.trim()) {
+    const q = query.toLowerCase().trim();
+    dataset = dataset.filter((h) =>
+      h.common_name.toLowerCase().includes(q) ||
+      h.sanskrit_name.toLowerCase().includes(q) ||
+      h.scientific_name.toLowerCase().includes(q) ||
+      h.key_bioactives.some((b) => b.toLowerCase().includes(q))
+    );
+  }
+
+  if (filterType === "3p") {
+    dataset = dataset.filter((h) => h.patentability_status.rating === "HIGH_SCRUTINY_3P");
+  } else if (filterType === "nba") {
+    dataset = dataset.filter((h) => h.abs_requirements.nba_clearance === "MANDATORY_FOREIGN");
+  } else if (filterType === "active") {
+    dataset = dataset.filter((h) => h.active_research_count > 0);
+  }
+
+  return { count: dataset.length, results: dataset };
+}
+
+export async function getHerbDetail(id: string): Promise<HerbDetail | null> {
+  try {
+    const res = await fetch(`${BACKEND_URL}/explorer/herb/${id}`);
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn("Backend explorer detail unavailable, using offline fallback:", err);
+  }
+
+  const dataset = (OFFLINE_HERBS_DATA as unknown) as HerbDetail[];
+  return dataset.find((h) => h.id.toLowerCase() === id.toLowerCase()) || null;
+}
+
 

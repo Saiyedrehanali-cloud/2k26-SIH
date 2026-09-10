@@ -11,14 +11,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from backend.routers import chat, classify
+from backend.routers import chat, classify, registry, explorer
 
 load_dotenv()
 
 app = FastAPI(
     title="IP-SAKTI Sahayak Backend API",
-    description="RAG-based Legal AI Assistant for AYUSH, Patents, Biodiversity, and Traditional Knowledge",
-    version="1.0.0"
+    description="RAG-based Legal AI Assistant for AYUSH, Patents, Biodiversity, Traditional Knowledge, and Innovation Registry",
+    version="1.1.0"
 )
 
 # Configure CORS to allow frontend Next.js dev server
@@ -33,6 +33,8 @@ app.add_middleware(
 # Register routers
 app.include_router(chat.router)
 app.include_router(classify.router)
+app.include_router(registry.router)
+app.include_router(explorer.router)
 
 @app.get("/health")
 async def health_check():

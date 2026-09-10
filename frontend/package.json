@@ -1,10 +1,10 @@
 {
-  "name": "ip-sakti-sahayak-frontend",
+  "name": "vigyan-veda-frontend",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node -e \"const fs=require('fs'); try{fs.rmSync('.next', {recursive:true, force:true});}catch(e){}\" && next build",
     "start": "next start",
     "lint": "next lint"
   },

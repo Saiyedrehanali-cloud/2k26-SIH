@@ -27,6 +27,8 @@ Ayurvedic innovators (researchers, startups, traditional practitioners) must nav
 4. **"Not Legal Advice" Disclaimer** — persistent banner, cannot be dismissed permanently, reappears every session.
 5. **Human Escalation CTA** — a button that says "Talk to an IP facilitator" (can be a static contact form/mailto for the demo).
 6. **Seeded Knowledge Base** — a small, curated set of real documents (Patents Act sections, Biological Diversity Act, a few TKDL entries, TRIPS/Nagoya excerpts) — enough to answer 8–10 rehearsed demo questions correctly and citably.
+7. **The Innovation Registry & Conflict Checker** — A secure pre-registration ledger (`research_registry.db`) where startups log ongoing research/formulation claims. When a user queries a similar compound, the RAG engine warns them of "Pending Prior Art" from another entity.
+8. **The Herb & TKDL Explorer** — A dedicated search dashboard (`/explorer`) acting as an encyclopedia for Ayurvedic plants (Ashwagandha, Turmeric, Neem, Tulsi, Brahmi, Guggulu, etc.), cross-referencing TKDL citations, Section 3(p) patent exclusions, and National Biodiversity Authority (NBA § 6) Access & Benefit Sharing rules.
 
 ### 3.2 Post-MVP / National Round (mention in pitch, build if time allows)
 - Multilingual voice + text via Bhashini API.
@@ -45,6 +47,8 @@ Ayurvedic innovators (researchers, startups, traditional practitioners) must nav
 - FR3: Every AI-generated answer is decomposed into: (a) direct answer, (b) citation list, (c) confidence score. The frontend renders these as three distinct visual elements, not one blob of text.
 - FR4: If retrieval confidence is below a threshold, the assistant must respond with "I don't have a confident source for this — please consult a facilitator" rather than guessing.
 - FR5: Disclaimer text is server-rendered/injected on every AI response, not just shown once in the UI shell (so it can't be missed or removed by frontend state bugs).
+- FR6: When an incoming chat query matches a pre-registered research claim in `research_registry.db`, the AI must inject a prominent Conflict Alert card warning the user of pending prior art.
+- FR7: The Herb Explorer route `/explorer` must provide instant search, classification filtering, and expandable botanical dossiers with Section 3(p) analysis and NBA ABS requirements.
 
 ## 5. Non-Functional Requirements
 - **Accuracy over fluency**: prefer "I don't know" to a plausible-sounding wrong answer.

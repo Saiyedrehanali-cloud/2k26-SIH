@@ -2,8 +2,9 @@ import os
 import json
 import httpx
 from fastapi import APIRouter
-from backend.models import ChatRequest, ChatResponse, Citation
+from backend.models import ChatRequest, ChatResponse, Citation, ConflictAlert, ConflictItem
 from backend.rag.retrieve import retrieve_chunks
+from backend.registry_db import check_conflicts
 from backend.rag.prompts import (
     SYSTEM_PROMPT,
     build_user_prompt,
@@ -86,7 +87,7 @@ def match_demo_cache(query: str, jurisdiction: str) -> ChatResponse | None:
                 citations=citations,
                 confidence=item.get("confidence", "high"),
                 jurisdiction=jurisdiction,
-                refusal=False
+                disclaimer="This tool provides informational guidance, not formal legal advice. Consult a registered IP facilitator or patent attorney for official filings."
             )
     return None
 
@@ -95,26 +96,53 @@ def match_demo_cache(query: str, jurisdiction: str) -> ChatResponse | None:
 async def chat_endpoint(request: ChatRequest) -> ChatResponse:
     """
     Live RAG Endpoint:
-    1. Checks offline demo cache for sub-millisecond stage responses.
-    2. Retrieves top statutory chunks from ChromaDB filtered by active jurisdiction.
-    3. Runs confidence check against similarity thresholds.
-    4. Attempts live LLM synthesis if API key is present; otherwise utilizes verified local synthesis.
+    1. Simultaneously queries research_registry.db to detect pending formulation conflicts.
+    2. Checks offline demo cache for sub-millisecond stage responses.
+    3. Retrieves top statutory chunks from ChromaDB filtered by active jurisdiction.
+    4. Runs confidence check against similarity thresholds.
+    5. Attempts live LLM synthesis if API key is present; otherwise utilizes verified local synthesis.
+    6. Injects Conflict Alert into response if overlapping pending research is discovered.
     """
     jurisdiction = request.jurisdiction.lower().strip()
     query = request.message.strip()
 
-    # Stage Insurance: Check demo cache for instant verified answer
+    # 1. Check Innovation Registry for pending prior art / overlapping research
+    conflicts = check_conflicts(query)
+    conflict_alert = None
+    if conflicts:
+        conflict_items = [
+            ConflictItem(
+                reg_id=c["reg_id"],
+                title=c["title"],
+                herb_name=c["herb_name"],
+                applicant_name=c["applicant_name"],
+                applicant_type=c["applicant_type"],
+                stage=c["stage"],
+                timestamp=c["timestamp"],
+                conflict_reason=c.get("conflict_reason", "Overlapping formulation parameters")
+            )
+            for c in conflicts
+        ]
+        conflict_alert = ConflictAlert(
+            has_conflict=True,
+            conflict_count=len(conflict_items),
+            summary=f"Conflict Alert: {len(conflict_items)} pending research registration(s) currently logged for similar formulation claims.",
+            conflicts=conflict_items
+        )
+
+    # 2. Stage Insurance: Check demo cache for instant verified answer
     cached = match_demo_cache(query, jurisdiction)
     if cached:
+        cached.conflict_alert = conflict_alert
         return cached
 
-    # Retrieve matching statutory chunks strictly filtered by jurisdiction
+    # 3. Retrieve matching statutory chunks strictly filtered by jurisdiction
     chunks = retrieve_chunks(query=query, jurisdiction=jurisdiction, top_k=3)
 
-    # Check for empty or low confidence refusal
+    # 4. Check for empty or low confidence refusal
     confidence = compute_confidence(chunks)
 
-    # Attempt LLM API call if key configured
+    # 5. Attempt LLM API call if key configured
     augmented_prompt = build_user_prompt(
         query=query,
         retrieved_chunks=chunks,
@@ -142,13 +170,17 @@ async def chat_endpoint(request: ChatRequest) -> ChatResponse:
             citations=citations,
             confidence=llm_result.get("confidence", confidence),
             jurisdiction=jurisdiction,
-            refusal=(confidence == "low")
+            disclaimer="This tool provides informational guidance, not formal legal advice. Consult a registered IP facilitator or patent attorney for official filings.",
+            conflict_alert=conflict_alert
         )
 
-    # Deterministic local statutory synthesizer (Zero-failure stage insurance)
-    return synthesize_local_response(
+    # 6. Deterministic local statutory synthesizer (Zero-failure stage insurance)
+    local_resp = synthesize_local_response(
         query=query,
         retrieved_chunks=chunks,
         jurisdiction=jurisdiction,
         classification=request.classification
     )
+    local_resp.conflict_alert = conflict_alert
+    return local_resp
+

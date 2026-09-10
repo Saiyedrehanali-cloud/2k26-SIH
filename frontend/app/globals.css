@@ -1,10 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
-  --background: #F9FAFB;
-  --foreground: #1F2937;
+  --background: #F7FAF8;
+  --foreground: #15261D;
+  --color-sage: #A8D5BA;
+  --color-mint: #6BBF8A;
+  --color-herbal: #4B9B6E;
+  --color-emerald: #2E7D5C;
+  --color-pine: #1B5E3A;
 }
 
 body {
@@ -24,11 +29,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E5E7EB;
+  background: #A8D5BA;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D1D5DB;
+  background: #6BBF8A;
 }
 
 /* Monospace legal citation helper */

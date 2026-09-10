@@ -15,20 +15,20 @@ export const ConfidenceBadge: React.FC<ConfidenceBadgeProps> = ({
     high: {
       label: "High Confidence",
       icon: CheckCircle2,
-      containerClasses: "bg-green-50 text-green-700 border-green-200",
-      dotClass: "bg-green-600",
+      containerClasses: "bg-[#EAF5EF] text-[#1B5E3A] border-[#A8D5BA]",
+      dotClass: "bg-[#2E7D5C]",
     },
     medium: {
       label: "Medium Confidence",
       icon: AlertCircle,
-      containerClasses: "bg-amber-50 text-amber-700 border-amber-200",
-      dotClass: "bg-amber-600",
+      containerClasses: "bg-[#F2F8F4] text-[#2E7D5C] border-[#6BBF8A]",
+      dotClass: "bg-[#4B9B6E]",
     },
     low: {
       label: "Low Confidence (Flagged)",
       icon: AlertTriangle,
-      containerClasses: "bg-orange-50 text-orange-700 border-orange-300",
-      dotClass: "bg-orange-600",
+      containerClasses: "bg-amber-50 text-amber-800 border-amber-300",
+      dotClass: "bg-amber-600",
     },
   };
 
